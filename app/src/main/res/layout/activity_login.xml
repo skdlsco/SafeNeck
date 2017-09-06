@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.safeneck.safeneck.Activity.LoginActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/login_appBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingEnd="@dimen/activity_horizontal_margin"
+            android:paddingStart="@dimen/activity_horizontal_margin">
+
+            <ImageView
+                android:id="@+id/login_btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/ic_arrow_back_24dp" />
+
+            <com.safeneck.safeneck.View.LetterSpacingTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/nanum_barun_gothic"
+                android:text="로그인"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16sp"
+                app:letterSpacing="2" />
+        </LinearLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="@id/login_gl_left"
+        app:layout_constraintRight_toRightOf="@id/login_gl_right"
+        app:layout_constraintTop_toBottomOf="@id/login_appBar">
+
+        <EditText
+            android:id="@+id/login_edit_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/box_stroke_mint"
+            android:fontFamily="@font/nanum_barun_gothic"
+            android:hint="아이디 입력"
+            android:inputType="text"
+            android:paddingBottom="16dp"
+            android:paddingEnd="20dp"
+            android:paddingStart="20dp"
+            android:paddingTop="16dp"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/login_edit_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/box_stroke_mint"
+            android:fontFamily="@font/nanum_barun_gothic"
+            android:hint="비밀번호 입력"
+            android:inputType="textPassword"
+            android:paddingBottom="16dp"
+            android:paddingEnd="20dp"
+            android:paddingStart="20dp"
+            android:paddingTop="16dp"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1"
+        android:background="#d7d7d7"
+        app:layout_constraintBottom_toBottomOf="@id/login_bottom_text"
+        app:layout_constraintLeft_toLeftOf="@id/login_btn_google"
+        app:layout_constraintRight_toRightOf="@id/login_btn_google"
+        app:layout_constraintTop_toTopOf="@id/login_bottom_text" />
+
+    <com.safeneck.safeneck.View.LetterSpacingTextView
+        android:id="@+id/login_bottom_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="12dp"
+        android:text="다른 방식으로 로그인"
+        android:textColor="@color/colorHalfBlack"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toTopOf="@id/login_btn_naver"
+        app:layout_constraintLeft_toLeftOf="@id/login_btn_naver"
+        app:layout_constraintRight_toRightOf="@id/login_btn_naver"
+        app:letterSpacing="2" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1"
+        android:background="#d7d7d7"
+        app:layout_constraintBottom_toBottomOf="@id/login_bottom_text"
+        app:layout_constraintLeft_toLeftOf="@id/login_btn_facebook"
+        app:layout_constraintRight_toRightOf="@id/login_btn_facebook"
+        app:layout_constraintTop_toTopOf="@id/login_bottom_text" />
+
+    <com.safeneck.safeneck.View.LoginImageView
+        android:id="@+id/login_btn_google"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/login_image_button_height"
+        android:layout_marginBottom="26dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toTopOf="@id/login_container"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toLeftOf="@id/login_gl_left"
+        app:layout_constraintRight_toLeftOf="@id/login_btn_naver"
+        app:strokeColor="@color/colorGoogle"
+        app:strokeWidth="@dimen/login_image_button_strokeWidth"
+        app:symbolRes="@drawable/ic_login_google" />
+
+    <com.safeneck.safeneck.View.LoginImageView
+        android:id="@+id/login_btn_naver"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/login_image_button_height"
+        android:layout_marginBottom="26dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toTopOf="@id/login_container"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@id/login_btn_google"
+        app:layout_constraintRight_toLeftOf="@id/login_btn_facebook"
+        app:strokeColor="@color/colorNaver"
+        app:strokeWidth="@dimen/login_image_button_strokeWidth"
+        app:symbolRes="@drawable/ic_login_naver" />
+
+    <com.safeneck.safeneck.View.LoginImageView
+        android:id="@+id/login_btn_facebook"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/login_image_button_height"
+        android:layout_marginBottom="26dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toTopOf="@id/login_container"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@id/login_btn_naver"
+        app:layout_constraintRight_toRightOf="@id/login_gl_right"
+        app:strokeColor="@color/colorFaceBook"
+        app:strokeWidth="@dimen/login_image_button_strokeWidth"
+        app:symbolRes="@drawable/ic_login_fb" />
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/login_container"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.safeneck.safeneck.View.LetterSpacingTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimaryDark"
+            android:fontFamily="@font/nanum_barun_gothic"
+            android:gravity="center"
+            android:text="로그인"
+            android:textColor="@color/colorWhite"
+            android:textSize="15sp"
+            app:letterSpacing="5" />
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.constraint.Guideline
+        android:id="@+id/login_gl_left"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/activity_horizontal_margin" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/login_gl_right"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/activity_horizontal_margin" />
+
+</android.support.constraint.ConstraintLayout>

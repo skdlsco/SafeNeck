@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    tools:context="com.safeneck.safeneck.SplashActivity">
+    tools:context="com.safeneck.safeneck.Activity.SplashActivity">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -24,7 +24,7 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <com.safeneck.safeneck.LetterSpacingTextView
+        <com.safeneck.safeneck.View.LetterSpacingTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nanum_barun_gothic_bold"
@@ -34,7 +34,7 @@
             android:textSize="12sp"
             app:letterSpacing="0.2" />
 
-        <com.safeneck.safeneck.LetterSpacingTextView
+        <com.safeneck.safeneck.View.LetterSpacingTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nanum_barun_gothic"
@@ -42,7 +42,7 @@
             android:text="선린인터넷고등학교 팀 Safe nekc"
             android:textColor="@color/colorWhite"
             android:textSize="10sp"
-            app:letterSpacing="0.2" />
+            app:letterSpacing="0.75" />
     </LinearLayout>
 
     <LinearLayout
@@ -53,23 +53,29 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <Button
+        <com.safeneck.safeneck.View.LetterSpacingTextView
+            android:id="@+id/splash_register"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/colorWhite"
             android:fontFamily="@font/nanum_barun_gothic"
+            android:gravity="center"
             android:text="회원가입"
-            android:textColor="@color/colorHalfBlack"
+            app:letterSpacing="8"
+            android:textColor="@color/colorQuarterBlack"
             android:textSize="14sp" />
 
-        <Button
+        <com.safeneck.safeneck.View.LetterSpacingTextView
+            android:id="@+id/splash_login"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/colorWhite"
             android:fontFamily="@font/nanum_barun_gothic"
+            android:gravity="center"
             android:text="로그인"
+            app:letterSpacing="8"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="14sp" />
     </LinearLayout>

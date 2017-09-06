@@ -3,4 +3,9 @@
     <declare-styleable name="LetterSpacingTextView">
         <attr name="letterSpacing" format="float|reference" />
     </declare-styleable>
+    <declare-styleable name="LoginImageView">
+        <attr name="strokeColor" format="reference|color" />
+        <attr name="symbolRes" format="integer|reference" />
+        <attr name="strokeWidth" format="dimension|reference" />
+    </declare-styleable>
 </resources>

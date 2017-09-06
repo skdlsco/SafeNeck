@@ -1,4 +1,4 @@
-package com.safeneck.safeneck
+package com.safeneck.safeneck.View
 
 import android.content.Context
 import android.content.res.TypedArray
@@ -7,6 +7,7 @@ import android.text.SpannableString
 import android.text.style.ScaleXSpan
 import android.util.AttributeSet
 import android.widget.TextView
+import com.safeneck.safeneck.R
 
 /**
  * Created by eka on 2017. 9. 4..
@@ -64,7 +65,7 @@ class LetterSpacingTextView : TextView {
         val finalText = SpannableString(builder.toString())
         if (builder.toString().length > 1) {
             for (i in 1 until builder.toString().length step 2)
-                finalText.setSpan(ScaleXSpan(mLetterSpacing), i, i + 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                finalText.setSpan(ScaleXSpan((mLetterSpacing + 1) / 10), i, i + 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         }
         super.setText(finalText, BufferType.SPANNABLE)
     }
