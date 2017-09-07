@@ -11,4 +11,7 @@
     <color name="colorNaver">#1ec800</color>
     <color name="colorFaceBook">#3b5998</color>
     <color name="colorBlack">#000000</color>
+    <color name="colorOptionTitle">#676767</color>
+    <color name="colorOptionContent">#b8b8b8</color>
+    <color name="colorOptionBar">#0d000000</color>
 </resources>

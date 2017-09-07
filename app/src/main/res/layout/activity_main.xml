@@ -1,43 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.safeneck.safeneck.Activity.MainActivity">
+<layout>
 
-    <android.support.design.widget.AppBarLayout
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="bottomBar"
+            type="com.safeneck.safeneck.Activity.MainActivity.BottomBar" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:paddingEnd="@dimen/activity_horizontal_margin"
-        android:paddingStart="@dimen/activity_horizontal_margin">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.safeneck.safeneck.Activity.MainActivity">
 
-    </android.support.design.widget.AppBarLayout>
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:paddingEnd="@dimen/activity_horizontal_margin"
+            android:paddingStart="@dimen/activity_horizontal_margin">
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/main_viewPager"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        </android.support.design.widget.AppBarLayout>
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:background="@color/colorPrimaryDark"
-        android:paddingEnd="@dimen/activity_horizontal_margin"
-        android:paddingStart="@dimen/activity_horizontal_margin">
+        <android.support.v4.view.ViewPager
+            android:id="@+id/main_viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
-        <ImageView
-            android:layout_width="@dimen/main_bottom_img_size"
-            android:layout_height="@dimen/main_bottom_img_size"
-            android:src="@drawable/ic_report_on" />
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:background="@color/colorPrimaryDark"
+            android:paddingEnd="@dimen/activity_horizontal_margin"
+            android:paddingStart="@dimen/activity_horizontal_margin">
 
-        <ImageView
-            android:id="@+id/main_bottom_center_img"
-            android:layout_width="@dimen/main_bottom_img_size"
-            android:layout_height="@dimen/main_bottom_img_size"
-            android:src="@drawable/ic_main_on" />
+            <LinearLayout
+                android:id="@+id/main_bottom_left_container"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:onClick="@{() -> bottomBar.bottomBarClick(0)}"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/main_bottom_center_container"
+                app:layout_constraintTop_toTopOf="parent">
 
-    </android.support.constraint.ConstraintLayout>
-</LinearLayout>
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="5"
+                    android:visibility="@{bottomBar.isSelected(0)}" />
+
+                <ImageView
+                    android:id="@+id/main_bottom_left_img"
+                    android:layout_width="@dimen/main_bottom_img_size"
+                    android:layout_height="@dimen/main_bottom_img_size"
+                    android:alpha="@{bottomBar.isSelected(0) == 0 ? 1f : 0.5f}"
+                    android:src="@drawable/ic_report_on" />
+
+                <com.safeneck.safeneck.View.LetterSpacingTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="데일리 리포트"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="9sp"
+                    android:visibility="@{bottomBar.isSelected(0)}"
+                    app:letterSpacing="5" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="4"
+                    android:visibility="@{bottomBar.isSelected(0)}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/main_bottom_center_container"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:onClick="@{() -> bottomBar.bottomBarClick(1)}"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/main_bottom_left_container"
+                app:layout_constraintRight_toLeftOf="@id/main_bottom_right_container"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="5"
+                    android:visibility="@{bottomBar.isSelected(1)}" />
+
+                <ImageView
+                    android:id="@+id/main_bottom_center_img"
+                    android:layout_width="@dimen/main_bottom_img_size"
+                    android:layout_height="@dimen/main_bottom_img_size"
+                    android:alpha="@{bottomBar.isSelected(1) == 0 ? 1f : 0.5f}"
+                    android:src="@drawable/ic_main_on" />
+
+                <com.safeneck.safeneck.View.LetterSpacingTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="메인"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="9sp"
+                    android:visibility="@{bottomBar.isSelected(1)}"
+                    app:letterSpacing="10" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="4"
+                    android:visibility="@{bottomBar.isSelected(1)}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/main_bottom_right_container"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:onClick="@{() -> bottomBar.bottomBarClick(2)}"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/main_bottom_center_container"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="5"
+                    android:visibility="@{bottomBar.isSelected(2)}" />
+
+                <ImageView
+                    android:id="@+id/main_bottom_right_img"
+                    android:layout_width="@dimen/main_bottom_img_size"
+                    android:layout_height="@dimen/main_bottom_img_size"
+                    android:alpha="@{bottomBar.isSelected(2) == 0 ? 1f : 0.5f}"
+                    android:src="@drawable/ic_option_on" />
+
+                <com.safeneck.safeneck.View.LetterSpacingTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="설정"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="9sp"
+                    android:visibility="@{bottomBar.isSelected(2)}"
+                    app:letterSpacing="10" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="4"
+                    android:visibility="@{bottomBar.isSelected(2)}" />
+            </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+</layout>

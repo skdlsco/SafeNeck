@@ -1,0 +1,337 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.safeneck.safeneck.Fragment.OptionFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingEnd="@dimen/activity_horizontal_margin"
+        android:paddingStart="@dimen/activity_horizontal_margin">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <com.safeneck.safeneck.View.LetterSpacingTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanum_barun_gothic_bold"
+                android:text="리포트 시간 설정"
+                android:textColor="@color/colorOptionTitle"
+                android:textSize="15dp"
+                app:letterSpacing="1" />
+
+            <com.safeneck.safeneck.View.LetterSpacingTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/nanum_barun_gothic_bold"
+                android:text="리포트 업데이트 시간을 설정합니다"
+                android:textColor="@color/colorOptionContent"
+                android:textSize="9dp"
+                app:letterSpacing="1" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/option_report_time_set"
+            android:layout_width="64dp"
+            android:layout_height="26dp"
+            android:background="@drawable/box_stroke_gray"
+            android:text="변 경"
+            android:textColor="@color/colorOptionTitle"
+            android:textSize="9dp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:background="@color/colorOptionBar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingEnd="@dimen/activity_horizontal_margin"
+        android:paddingStart="@dimen/activity_horizontal_margin">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <com.safeneck.safeneck.View.LetterSpacingTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanum_barun_gothic_bold"
+                android:text="자세 경고 알림 설정"
+                android:textColor="@color/colorOptionTitle"
+                android:textSize="15dp"
+                app:letterSpacing="1" />
+
+            <com.safeneck.safeneck.View.LetterSpacingTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/nanum_barun_gothic_bold"
+                android:text="자세 경고에 대한 자세의 효용범위를 설합니다"
+                android:textColor="@color/colorOptionContent"
+                android:textSize="9dp"
+                app:letterSpacing="1" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/option_attitude_alert_set"
+            android:layout_width="64dp"
+            android:layout_height="26dp"
+            android:background="@drawable/box_stroke_gray"
+            android:text="변 경"
+            android:textColor="@color/colorOptionTitle"
+            android:textSize="9dp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:background="@color/colorOptionBar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingEnd="@dimen/activity_horizontal_margin"
+        android:paddingStart="@dimen/activity_horizontal_margin">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <com.safeneck.safeneck.View.LetterSpacingTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanum_barun_gothic_bold"
+                android:text="진동 설정"
+                android:textColor="@color/colorOptionTitle"
+                android:textSize="15dp"
+                app:letterSpacing="1" />
+
+            <com.safeneck.safeneck.View.LetterSpacingTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/nanum_barun_gothic_bold"
+                android:text="진동 On/Off 옵션을 설정합니다"
+                android:textColor="@color/colorOptionContent"
+                android:textSize="9dp"
+                app:letterSpacing="1" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/option_vibrate_set"
+            android:layout_width="64dp"
+            android:layout_height="26dp"
+            android:background="@drawable/box_stroke_gray"
+            android:text="변 경"
+            android:textColor="@color/colorOptionTitle"
+            android:textSize="9dp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:background="@color/colorOptionBar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingEnd="@dimen/activity_horizontal_margin"
+        android:paddingStart="@dimen/activity_horizontal_margin">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <com.safeneck.safeneck.View.LetterSpacingTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanum_barun_gothic_bold"
+                android:text="진동 시간 설정"
+                android:textColor="@color/colorOptionTitle"
+                android:textSize="15dp"
+                app:letterSpacing="1" />
+
+            <com.safeneck.safeneck.View.LetterSpacingTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/nanum_barun_gothic_bold"
+                android:text="1초~10초로 설정 가능합니다"
+                android:textColor="@color/colorOptionContent"
+                android:textSize="9dp"
+                app:letterSpacing="1" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/option_vibrate_time_set"
+            android:layout_width="64dp"
+            android:layout_height="26dp"
+            android:background="@drawable/box_stroke_gray"
+            android:text="변 경"
+            android:textColor="@color/colorOptionTitle"
+            android:textSize="9dp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:background="@color/colorOptionBar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingEnd="@dimen/activity_horizontal_margin"
+        android:paddingStart="@dimen/activity_horizontal_margin">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <com.safeneck.safeneck.View.LetterSpacingTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanum_barun_gothic_bold"
+                android:text="하루 목표 알람 개수 설정"
+                android:textColor="@color/colorOptionTitle"
+                android:textSize="15dp"
+                app:letterSpacing="1" />
+
+            <com.safeneck.safeneck.View.LetterSpacingTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/nanum_barun_gothic_bold"
+                android:text="하루 경고 최대 수는 100개입니다"
+                android:textColor="@color/colorOptionContent"
+                android:textSize="9dp"
+                app:letterSpacing="1" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/option_daily_goal_count_set"
+            android:layout_width="64dp"
+            android:layout_height="26dp"
+            android:background="@drawable/box_stroke_gray"
+            android:text="변 경"
+            android:textColor="@color/colorOptionTitle"
+            android:textSize="9dp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:background="@color/colorOptionBar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingEnd="@dimen/activity_horizontal_margin"
+        android:paddingStart="@dimen/activity_horizontal_margin">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <com.safeneck.safeneck.View.LetterSpacingTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanum_barun_gothic_bold"
+                android:text="주간 목표 알람 개수 설정"
+                android:textColor="@color/colorOptionTitle"
+                android:textSize="15dp"
+                app:letterSpacing="1" />
+
+            <com.safeneck.safeneck.View.LetterSpacingTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/nanum_barun_gothic_bold"
+                android:text="주간 경고 최대 수는 700개입니다"
+                android:textColor="@color/colorOptionContent"
+                android:textSize="9dp"
+                app:letterSpacing="1" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/option_weekly_goal_count_set"
+            android:layout_width="64dp"
+            android:layout_height="26dp"
+            android:background="@drawable/box_stroke_gray"
+            android:text="변 경"
+            android:textColor="@color/colorOptionTitle"
+            android:textSize="9dp" />
+    </LinearLayout>
+</LinearLayout>
