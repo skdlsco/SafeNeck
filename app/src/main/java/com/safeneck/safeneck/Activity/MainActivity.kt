@@ -4,33 +4,51 @@ import android.databinding.BaseObservable
 import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.view.ViewPager
 import android.view.View
+import com.safeneck.safeneck.MainViewPagerAdapter
 import com.safeneck.safeneck.R
 import com.safeneck.safeneck.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    private val bottomBar = BottomBar()
+    private lateinit var viewPager: ViewPager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         val dataBinding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        viewPager = findViewById<ViewPager>(R.id.main_viewPager)
+        val mainViewPagerAdapter = MainViewPagerAdapter(supportFragmentManager)
+        viewPager.adapter = mainViewPagerAdapter
+        val bottomBar = BottomBar(viewPager)
         dataBinding.bottomBar = bottomBar
-        bottomBar.selected = 1
+        viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+            override fun onPageScrollStateChanged(state: Int) {
+            }
+
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+            }
+
+            override fun onPageSelected(position: Int) {
+                bottomBar.bottomBarClick(position)
+            }
+
+        })
+        viewPager.currentItem = 1
     }
 
-    class BottomBar : BaseObservable() {
-        var selected = 0
-
+    class BottomBar(private var viewPager: ViewPager) : BaseObservable() {
         fun isSelected(pos: Int): Int {
             return when (pos) {
-                selected -> View.VISIBLE
+                viewPager.currentItem -> View.VISIBLE
                 else -> View.GONE
             }
         }
 
         fun bottomBarClick(pos: Int) {
-            selected = pos
+            viewPager.currentItem = pos
             notifyChange()
         }
     }
+
 }

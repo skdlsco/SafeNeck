@@ -5,6 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorNavigationBar">#26a69a</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorHalfWhite">#88FFFFFF</color>
     <color name="colorQuarterBlack">#44000000</color>
     <color name="colorHalfBlack">#88000000</color>
     <color name="colorGoogle">#dd4b39</color>
