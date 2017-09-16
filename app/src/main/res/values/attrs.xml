@@ -8,4 +8,13 @@
         <attr name="symbolRes" format="integer|reference" />
         <attr name="strokeWidth" format="dimension|reference" />
     </declare-styleable>
+    <declare-styleable name="CircleGraphView">
+        <attr name="innerCircleColor" format="color|reference" />
+        <attr name="outerCircleRadius" format="dimension|reference" />
+        <attr name="innerCircleRadius" format="dimension|reference" />
+        <attr name="outerStrokeColor" format="color|reference" />
+        <attr name="innerStrokeColor" format="color|reference" />
+        <attr name="outerStrokeWidth" format="dimension|reference" />
+        <attr name="innerStrokeWidth" format="dimension|reference" />
+    </declare-styleable>
 </resources>

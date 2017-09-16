@@ -1,101 +1,234 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.safeneck.safeneck.FirstLoginActivity">
+<layout>
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/login_appBar"
+    <data>
+
+        <variable
+            name="Gender"
+            type="com.safeneck.safeneck.Activity.FirstLoginActivity.Gender" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.safeneck.safeneck.Activity.FirstLoginActivity">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/login_appBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:paddingStart="@dimen/activity_horizontal_margin">
+
+                <com.safeneck.safeneck.View.LetterSpacingTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/nanum_barun_gothic_bold"
+                    android:text="초기 설정"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="16sp"
+                    app:letterSpacing="1" />
+            </LinearLayout>
+        </android.support.design.widget.AppBarLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="23dp"
             android:paddingEnd="@dimen/activity_horizontal_margin"
-            android:paddingStart="@dimen/activity_horizontal_margin">
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:paddingTop="23dp">
 
             <com.safeneck.safeneck.View.LetterSpacingTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="4dp"
                 android:fontFamily="@font/nanum_barun_gothic_bold"
-                android:text="초기 설정"
-                android:textColor="@color/colorPrimaryDark"
+                android:text="사용자 정보 설정"
                 android:textSize="16sp"
-                app:letterSpacing="1" />
+                app:letterSpacing="1.5" />
+
+            <com.safeneck.safeneck.View.LetterSpacingTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanum_barun_gothic"
+                android:text="더 나은 서비스 제공을 위한 설정사항입니다"
+                android:textSize="11sp"
+                app:letterSpacing="1.5" />
         </LinearLayout>
-    </android.support.design.widget.AppBarLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingBottom="23dp"
-        android:paddingEnd="@dimen/activity_horizontal_margin"
-        android:paddingStart="@dimen/activity_horizontal_margin"
-        android:paddingTop="23dp">
-
-        <com.safeneck.safeneck.View.LetterSpacingTextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:fontFamily="@font/nanum_barun_gothic_bold"
-            android:text="사용자 정보 설정"
-            android:textSize="16sp"
-            app:letterSpacing="1" />
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingEnd="@dimen/activity_horizontal_margin"
+            android:paddingStart="@dimen/activity_horizontal_margin">
 
-        <com.safeneck.safeneck.View.LetterSpacingTextView
-            android:layout_width="wrap_content"
+            <android.support.v7.widget.CardView
+                android:id="@+id/firstLogin_gender_female"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@{Gender.getBackGround(0)}"
+                android:onClick="@{()->Gender.onClick(0)}"
+                app:cardElevation="@{Gender.getElevation(0)}">
+
+                <com.safeneck.safeneck.View.LetterSpacingTextView
+                    android:id="@+id/firstLogin_gender_female_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/nanum_barun_gothic"
+                    android:gravity="center"
+                    android:text="여자"
+                    android:textColor="@{Gender.getTextColor(0)}"
+                    android:textSize="11sp" />
+            </android.support.v7.widget.CardView>
+
+            <View
+                android:layout_width="18dp"
+                android:layout_height="match_parent" />
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/firstLogin_gender_male"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@{Gender.getBackGround(1)}"
+                android:onClick="@{()->Gender.onClick(1)}">
+
+                <com.safeneck.safeneck.View.LetterSpacingTextView
+                    android:id="@+id/firstLogin_gender_male_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/nanum_barun_gothic"
+                    android:gravity="center"
+                    android:text="남자"
+                    android:textColor="@{Gender.getTextColor(1)}"
+                    android:textSize="11sp" />
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/nanum_barun_gothic"
-            android:text="더 나은 서비스 제공을 위한 설정사항입니다"
-            android:textSize="11sp"
-            app:letterSpacing="1" />
-    </LinearLayout>
+            android:orientation="vertical"
+            android:paddingEnd="@dimen/activity_horizontal_margin"
+            android:paddingStart="@dimen/activity_horizontal_margin">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="17dp"
+                android:background="@drawable/box_stroke_mint"
+                android:orientation="horizontal"
+                android:paddingBottom="16dp"
+                android:paddingEnd="18dp"
+                android:paddingStart="18dp"
+                android:paddingTop="16dp">
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1" />
+                <com.safeneck.safeneck.View.LetterSpacingTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/nanum_barun_gothic"
+                    android:text="나이 선택"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="11sp"
+                    app:letterSpacing="2" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <android.support.v7.widget.AppCompatSpinner
+                    android:id="@+id/firstLogin_spinner_age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:spinnerMode="dropdown" />
+
+                <ImageView
+                    android:id="@+id/firstLogin_spinner_age_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_firstlogin_expand" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/box_stroke_mint"
+                android:orientation="horizontal"
+                android:paddingBottom="16dp"
+                android:paddingEnd="18dp"
+                android:paddingStart="18dp"
+                android:paddingTop="16dp">
+
+                <com.safeneck.safeneck.View.LetterSpacingTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/nanum_barun_gothic"
+                    android:text="직군 선택"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="11sp"
+                    app:letterSpacing="2" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <android.support.v7.widget.AppCompatSpinner
+                    android:id="@+id/firstLogin_spinner_job"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:spinnerMode="dropdown" />
+
+                <ImageView
+                    android:id="@+id/firstLogin_spinner_job_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_firstlogin_expand" />
+            </LinearLayout>
+        </LinearLayout>
 
         <View
-            android:layout_width="18dp"
-            android:layout_height="match_parent" />
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/login_container"
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        app:cardElevation="8dp">
-
-        <com.safeneck.safeneck.View.LetterSpacingTextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorPrimaryDark"
-            android:fontFamily="@font/nanum_barun_gothic"
-            android:gravity="center"
-            android:text="로그인"
-            android:textColor="@color/colorWhite"
-            android:textSize="15sp"
-            app:letterSpacing="5" />
-    </android.support.v7.widget.CardView>
-</LinearLayout>
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/firstLogin_container"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            app:cardElevation="8dp">
+
+            <com.safeneck.safeneck.View.LetterSpacingTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimaryDark"
+                android:fontFamily="@font/nanum_barun_gothic"
+                android:gravity="center"
+                android:text="시작하기"
+                android:textColor="@color/colorWhite"
+                android:textSize="15sp"
+                app:letterSpacing="5" />
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+</layout>

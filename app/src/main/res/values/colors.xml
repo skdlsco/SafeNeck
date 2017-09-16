@@ -15,4 +15,10 @@
     <color name="colorOptionTitle">#676767</color>
     <color name="colorOptionContent">#b8b8b8</color>
     <color name="colorOptionBar">#0d000000</color>
+
+    <color name="colorVeryGood">#00bfa5</color>
+    <color name="colorGood">#1e837a</color>
+    <color name="colorCommon">#3e5259</color>
+    <color name="colorBad">#a51c1c</color>
+    <color name="colorVeryBad">#e23030</color>
 </resources>

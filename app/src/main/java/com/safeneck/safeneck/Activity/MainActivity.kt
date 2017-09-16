@@ -1,5 +1,6 @@
 package com.safeneck.safeneck.Activity
 
+import android.content.Context
 import android.databinding.BaseObservable
 import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         viewPager = findViewById<ViewPager>(R.id.main_viewPager)
         val mainViewPagerAdapter = MainViewPagerAdapter(supportFragmentManager)
         viewPager.adapter = mainViewPagerAdapter
-        val bottomBar = BottomBar(viewPager)
+        val bottomBar = BottomBar(viewPager, this)
         dataBinding.bottomBar = bottomBar
         viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         viewPager.currentItem = 1
     }
 
-    class BottomBar(private var viewPager: ViewPager) : BaseObservable() {
+    class BottomBar(private var viewPager: ViewPager, val context: Context) : BaseObservable() {
         fun isSelected(pos: Int): Int {
             return when (pos) {
                 viewPager.currentItem -> View.VISIBLE
@@ -48,6 +49,23 @@ class MainActivity : AppCompatActivity() {
         fun bottomBarClick(pos: Int) {
             viewPager.currentItem = pos
             notifyChange()
+        }
+
+        fun getResource(pos: Int): Int {
+            when (pos) {
+                0 -> if (isSelected(pos) == 0)
+                    context.resources.getDrawable(R.drawable.ic_report_on)
+                else context.resources.getDrawable(R.drawable.ic_report_off)
+
+                1 -> if (isSelected(pos) == 0)
+                    context.resources.getDrawable(R.drawable.ic_main_on)
+                else context.resources.getDrawable(R.drawable.ic_main_off)
+
+                2 -> if (isSelected(pos) == 0)
+                    context.resources.getDrawable(R.drawable.ic_option_on)
+                else context.resources.getDrawable(R.drawable.ic_option_off)
+            }
+            return pos
         }
     }
 

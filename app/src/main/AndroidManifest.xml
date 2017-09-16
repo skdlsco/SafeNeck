@@ -18,7 +18,7 @@
         <activity android:name=".Activity.RegisterActivity" />
         <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.MainActivity" />
-        <activity android:name=".FirstLoginActivity"></activity>
+        <activity android:name=".Activity.FirstLoginActivity" />
     </application>
 
 </manifest>

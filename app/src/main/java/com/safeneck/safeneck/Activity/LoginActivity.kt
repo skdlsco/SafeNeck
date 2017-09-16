@@ -12,7 +12,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         login_container.setOnClickListener {
-            startActivity<MainActivity>()
+            startActivity<FirstLoginActivity>()
         }
     }
 }
