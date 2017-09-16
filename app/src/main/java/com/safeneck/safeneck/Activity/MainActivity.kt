@@ -3,6 +3,7 @@ package com.safeneck.safeneck.Activity
 import android.content.Context
 import android.databinding.BaseObservable
 import android.databinding.DataBindingUtil
+import android.graphics.drawable.Drawable
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.view.ViewPager
@@ -49,23 +50,6 @@ class MainActivity : AppCompatActivity() {
         fun bottomBarClick(pos: Int) {
             viewPager.currentItem = pos
             notifyChange()
-        }
-
-        fun getResource(pos: Int): Int {
-            when (pos) {
-                0 -> if (isSelected(pos) == 0)
-                    context.resources.getDrawable(R.drawable.ic_report_on)
-                else context.resources.getDrawable(R.drawable.ic_report_off)
-
-                1 -> if (isSelected(pos) == 0)
-                    context.resources.getDrawable(R.drawable.ic_main_on)
-                else context.resources.getDrawable(R.drawable.ic_main_off)
-
-                2 -> if (isSelected(pos) == 0)
-                    context.resources.getDrawable(R.drawable.ic_option_on)
-                else context.resources.getDrawable(R.drawable.ic_option_off)
-            }
-            return pos
         }
     }
 

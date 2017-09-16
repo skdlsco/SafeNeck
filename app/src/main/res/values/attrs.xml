@@ -3,6 +3,10 @@
     <declare-styleable name="LetterSpacingTextView">
         <attr name="letterSpacing" format="float|reference" />
     </declare-styleable>
+    <declare-styleable name="CircleGraphValueView">
+        <attr name="titleColor" format="color|reference" />
+        <attr name="status" format="string|reference" />
+    </declare-styleable>
     <declare-styleable name="LoginImageView">
         <attr name="strokeColor" format="reference|color" />
         <attr name="symbolRes" format="integer|reference" />

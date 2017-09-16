@@ -6,9 +6,7 @@ import android.databinding.DataBindingUtil
 import android.graphics.drawable.Drawable
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.util.TypedValue
-import android.view.View
 import com.safeneck.safeneck.R
 import kotlinx.android.synthetic.main.activity_first_login.*
 import org.jetbrains.anko.startActivity

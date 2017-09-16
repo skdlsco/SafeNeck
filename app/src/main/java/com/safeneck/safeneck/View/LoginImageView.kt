@@ -3,37 +3,39 @@ package com.safeneck.safeneck.View
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.TypedArray
-import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
-import android.text.Layout
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.ImageView
 import android.widget.LinearLayout
 import com.safeneck.safeneck.R
 import com.safeneck.safeneck.R.color.*
 import kotlinx.android.synthetic.main.view_login.view.*
-import org.jetbrains.anko.db.IntParser
 
 /**
  * Created by eka on 2017. 9. 5..
  */
 class LoginImageView : LinearLayout {
 
+    private var symbolRes: Int = 0
+    private var strokeColor: Int = 0
+    private var strokeWidth: Float = 0f
+
     constructor(context: Context?) : super(context) {
         initView()
+        setView()
     }
 
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
         initView()
         getAttrs(attrs)
+        setView()
     }
 
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         initView()
         getAttrs(attrs, defStyleAttr)
+        setView()
     }
 
     private fun getAttrs(attrs: AttributeSet?) {
@@ -56,15 +58,19 @@ class LoginImageView : LinearLayout {
     @SuppressLint("ResourceAsColor")
     private fun setTypeArray(typedArray: TypedArray) {
 
-        val symbolRes = typedArray.getResourceId(R.styleable.LoginImageView_symbolRes, 0)
-        view_login_symbol.setImageResource(symbolRes)
+        symbolRes = typedArray.getResourceId(R.styleable.LoginImageView_symbolRes, 0)
 
-        val strokeColor = typedArray.getColor(R.styleable.LoginImageView_strokeColor, colorPrimaryDark)
-        val strokeWidth = typedArray.getDimension(R.styleable.LoginImageView_strokeWidth, 2f)
+        strokeColor = typedArray.getColor(R.styleable.LoginImageView_strokeColor, colorPrimaryDark)
+        strokeWidth = typedArray.getDimension(R.styleable.LoginImageView_strokeWidth, 2f)
+
+        typedArray.recycle()
+    }
+
+    private fun setView() {
+
+        view_login_symbol.setImageResource(symbolRes)
         val drawable: GradientDrawable = view_login_container.background as GradientDrawable
         drawable.setStroke(strokeWidth.toInt(), strokeColor)
         view_login_container.background = drawable
-
-        typedArray.recycle()
     }
 }

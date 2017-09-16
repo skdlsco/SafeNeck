@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/circleGraphValue_img"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:src="@drawable/ic_doughnut"
+        app:layout_constraintBottom_toBottomOf="@id/circleGraphValue_status"
+        app:layout_constraintTop_toTopOf="@id/circleGraphValue_status" />
+
+
+    <com.safeneck.safeneck.View.LetterSpacingTextView
+        android:id="@+id/circleGraphValue_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:fontFamily="@font/nanum_barun_gothic_bold"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toRightOf="@id/circleGraphValue_img"
+        app:letterSpacing="2"
+        tools:text="매우 좋음" />
+
+    <com.safeneck.safeneck.View.LetterSpacingTextView
+        android:id="@+id/circleGraphValue_percentage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:fontFamily="@font/nanum_barun_gothic_bold"
+        android:textColor="#8f8e8e"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="@id/circleGraphValue_status"
+        app:layout_constraintTop_toBottomOf="@id/circleGraphValue_status"
+        app:letterSpacing="3"
+        tools:text="24" />
+
+    <com.safeneck.safeneck.View.LetterSpacingTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nanum_barun_gothic_bold"
+        android:text=" %"
+        android:textColor="#8f8e8e"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/circleGraphValue_percentage"
+        app:layout_constraintLeft_toRightOf="@id/circleGraphValue_percentage"
+        app:layout_constraintTop_toTopOf="@id/circleGraphValue_percentage"
+        app:letterSpacing="3" />
+</android.support.constraint.ConstraintLayout>

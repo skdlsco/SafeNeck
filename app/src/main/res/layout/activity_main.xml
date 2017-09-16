@@ -86,8 +86,9 @@
                     android:id="@+id/main_bottom_left_img"
                     android:layout_width="@dimen/main_bottom_img_size"
                     android:layout_height="@dimen/main_bottom_img_size"
-                    android:alpha="@{bottomBar.isSelected(0) == 0 ? 1f : 0.5f}"
-                    android:src="@drawable/ic_report_on" />
+                    android:alpha="@{bottomBar.isSelected(0) == 0 ? 1f : 0.2f}"
+                    android:src="@drawable/ic_report_on"
+                    android:tint="@{bottomBar.isSelected(0) == 0? @color/colorWhite : @color/colorBlack}" />
 
                 <com.safeneck.safeneck.View.LetterSpacingTextView
                     android:layout_width="wrap_content"
@@ -128,8 +129,9 @@
                     android:id="@+id/main_bottom_center_img"
                     android:layout_width="@dimen/main_bottom_img_size"
                     android:layout_height="@dimen/main_bottom_img_size"
-                    android:alpha="@{bottomBar.isSelected(1) == 0 ? 1f : 0.5f}"
-                    android:src="@drawable/ic_main_on" />
+                    android:alpha="@{bottomBar.isSelected(1) == 0 ? 1f : 0.2f}"
+                    android:src="@drawable/ic_main_on"
+                    android:tint="@{bottomBar.isSelected(1) == 0? @color/colorWhite : @color/colorBlack}" />
 
                 <com.safeneck.safeneck.View.LetterSpacingTextView
                     android:layout_width="wrap_content"
@@ -170,8 +172,9 @@
                     android:id="@+id/main_bottom_right_img"
                     android:layout_width="@dimen/main_bottom_img_size"
                     android:layout_height="@dimen/main_bottom_img_size"
-                    android:alpha="@{bottomBar.isSelected(2) == 0 ? 1f : 0.5f}"
-                    android:src="@drawable/ic_option_on" />
+                    android:alpha="@{bottomBar.isSelected(2) == 0 ? 1f : 0.2f}"
+                    android:src="@drawable/ic_option_on"
+                    android:tint="@{bottomBar.isSelected(2) == 0? @color/colorWhite : @color/colorBlack}" />
 
                 <com.safeneck.safeneck.View.LetterSpacingTextView
                     android:layout_width="wrap_content"
