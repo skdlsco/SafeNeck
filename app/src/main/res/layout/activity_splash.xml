@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@drawable/bg_splash"
     tools:context="com.safeneck.safeneck.Activity.SplashActivity">
 
     <ImageView
@@ -62,9 +62,9 @@
             android:fontFamily="@font/nanum_barun_gothic"
             android:gravity="center"
             android:text="회원가입"
-            app:letterSpacing="8"
             android:textColor="@color/colorQuarterBlack"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            app:letterSpacing="8" />
 
         <com.safeneck.safeneck.View.LetterSpacingTextView
             android:id="@+id/splash_login"
@@ -75,8 +75,8 @@
             android:fontFamily="@font/nanum_barun_gothic"
             android:gravity="center"
             android:text="로그인"
-            app:letterSpacing="8"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            app:letterSpacing="8" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
