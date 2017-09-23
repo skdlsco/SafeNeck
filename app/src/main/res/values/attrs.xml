@@ -21,4 +21,17 @@
         <attr name="outerStrokeWidth" format="dimension|reference" />
         <attr name="innerStrokeWidth" format="dimension|reference" />
     </declare-styleable>
+    <declare-styleable name="BarChartView">
+        <attr name="barWidth" format="dimension|reference" />
+        <attr name="barColor" format="color|reference" />
+        <attr name="barDistance" format="dimension|reference" />
+        <attr name="underLineColor" format="color|reference" />
+        <attr name="underLineWidth" format="dimension|reference" />
+        <attr name="valueTextColor" format="color|reference" />
+        <attr name="valueTextSize" format="dimension|reference" />
+        <attr name="barMaxHeight" format="dimension|reference" />
+        <attr name="barRadius" format="dimension|reference" />
+        <attr name="bottomTextColor" format="color|reference" />
+        <attr name="bottomTextSize" format="dimension|reference" />
+    </declare-styleable>
 </resources>

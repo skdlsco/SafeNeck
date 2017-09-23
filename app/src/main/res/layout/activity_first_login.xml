@@ -127,6 +127,7 @@
             android:paddingStart="@dimen/activity_horizontal_margin">
 
             <LinearLayout
+                android:id="@+id/firstLogin_spinner_age_container"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginBottom="17dp"
@@ -156,6 +157,7 @@
                     android:id="@+id/firstLogin_spinner_age"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
                     android:background="@android:color/transparent"
                     android:spinnerMode="dropdown" />
 
@@ -168,6 +170,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/firstLogin_spinner_job_container"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/box_stroke_mint"
@@ -196,7 +199,9 @@
                     android:id="@+id/firstLogin_spinner_job"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
                     android:background="@android:color/transparent"
+                    android:gravity="right"
                     android:spinnerMode="dropdown" />
 
                 <ImageView

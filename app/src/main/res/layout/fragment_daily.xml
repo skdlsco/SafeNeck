@@ -116,7 +116,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_chevron_left"
+                            android:src="@drawable/ic_chevron_left_half_black"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintLeft_toRightOf="@id/daily_status_left_img"
                             app:layout_constraintRight_toLeftOf="@id/daily_status_center_img"
@@ -157,7 +157,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_chevron_left"
+                            android:src="@drawable/ic_chevron_left_half_black"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintLeft_toRightOf="@id/daily_status_center_img"
                             app:layout_constraintRight_toLeftOf="@id/daily_status_right_img"
@@ -280,8 +280,8 @@
                     android:orientation="vertical"
                     android:paddingBottom="20dp">
 
-                    <com.safeneck.safeneck.View.CircleGraphView
-                        android:id="@+id/daily_circleGraph"
+                    <com.safeneck.safeneck.View.PieChartView
+                        android:id="@+id/daily_pieChart"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -294,47 +294,47 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <com.safeneck.safeneck.View.CircleGraphValueView
-                            android:id="@+id/daily_circleGraphValue_veryGood"
+                        <com.safeneck.safeneck.View.PieChartValueView
+                            android:id="@+id/daily_pieChartValue_veryGood"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintRight_toLeftOf="@id/daily_circleGraphValue_good"
+                            app:layout_constraintRight_toLeftOf="@id/daily_pieChartValue_good"
                             app:status="매우 좋음"
                             app:titleColor="@color/colorVeryGood" />
 
-                        <com.safeneck.safeneck.View.CircleGraphValueView
-                            android:id="@+id/daily_circleGraphValue_good"
+                        <com.safeneck.safeneck.View.PieChartValueView
+                            android:id="@+id/daily_pieChartValue_good"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:layout_constraintLeft_toRightOf="@id/daily_circleGraphValue_veryGood"
-                            app:layout_constraintRight_toLeftOf="@id/daily_circleGraphValue_common"
+                            app:layout_constraintLeft_toRightOf="@id/daily_pieChartValue_veryGood"
+                            app:layout_constraintRight_toLeftOf="@id/daily_pieChartValue_common"
                             app:status="좋음"
                             app:titleColor="@color/colorGood" />
 
-                        <com.safeneck.safeneck.View.CircleGraphValueView
-                            android:id="@+id/daily_circleGraphValue_common"
+                        <com.safeneck.safeneck.View.PieChartValueView
+                            android:id="@+id/daily_pieChartValue_common"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:layout_constraintLeft_toRightOf="@id/daily_circleGraphValue_good"
-                            app:layout_constraintRight_toLeftOf="@id/daily_circleGraphValue_bad"
+                            app:layout_constraintLeft_toRightOf="@id/daily_pieChartValue_good"
+                            app:layout_constraintRight_toLeftOf="@id/daily_pieChartValue_bad"
                             app:status="보통"
                             app:titleColor="@color/colorCommon" />
 
-                        <com.safeneck.safeneck.View.CircleGraphValueView
-                            android:id="@+id/daily_circleGraphValue_bad"
+                        <com.safeneck.safeneck.View.PieChartValueView
+                            android:id="@+id/daily_pieChartValue_bad"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:layout_constraintLeft_toRightOf="@id/daily_circleGraphValue_common"
-                            app:layout_constraintRight_toLeftOf="@id/daily_circleGraphValue_veryBad"
+                            app:layout_constraintLeft_toRightOf="@id/daily_pieChartValue_common"
+                            app:layout_constraintRight_toLeftOf="@id/daily_pieChartValue_veryBad"
                             app:status="나쁨"
                             app:titleColor="@color/colorBad" />
 
-                        <com.safeneck.safeneck.View.CircleGraphValueView
-                            android:id="@+id/daily_circleGraphValue_veryBad"
+                        <com.safeneck.safeneck.View.PieChartValueView
+                            android:id="@+id/daily_pieChartValue_veryBad"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:layout_constraintLeft_toRightOf="@id/daily_circleGraphValue_bad"
+                            app:layout_constraintLeft_toRightOf="@id/daily_pieChartValue_bad"
                             app:layout_constraintRight_toRightOf="parent"
                             app:status="매우 나쁨"
                             app:titleColor="@color/colorVeryBad" />

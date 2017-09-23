@@ -160,7 +160,6 @@
         android:id="@+id/login_container"
         android:layout_width="match_parent"
         android:layout_height="64dp"
-        app:cardElevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <com.safeneck.safeneck.View.LetterSpacingTextView

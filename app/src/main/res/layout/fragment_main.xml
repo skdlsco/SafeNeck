@@ -1,134 +1,258 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.safeneck.safeneck.Fragment.MainFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingEnd="@dimen/activity_horizontal_margin"
-        android:paddingStart="@dimen/activity_horizontal_margin">
+        android:orientation="vertical">
 
-        <android.support.v7.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="150dp"
-            android:layout_marginBottom="14dp"
-            android:layout_marginEnd="8dp"
-            android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/activity_horizontal_margin"
+            android:paddingStart="@dimen/activity_horizontal_margin">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/box_radius"
-                android:orientation="vertical"
-                android:paddingStart="15dp"
-                android:paddingTop="20dp">
-
-                <com.safeneck.safeneck.View.LetterSpacingTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="9dp"
-                    android:fontFamily="@font/nanum_barun_gothic_bold"
-                    android:text="오늘 받은 알림 갯수"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="15sp"
-                    app:letterSpacing="2" />
-
-                <com.safeneck.safeneck.View.LetterSpacingTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:fontFamily="@font/nanum_barun_gothic"
-                    android:text="일간 알림 목표치는 15회 입니다."
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="9sp"
-                    app:letterSpacing="2" />
+            <android.support.v7.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_marginBottom="14dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="match_parent"
+                    android:background="@drawable/box_radius"
+                    android:orientation="vertical"
+                    android:paddingStart="15dp"
+                    android:paddingTop="20dp">
 
                     <com.safeneck.safeneck.View.LetterSpacingTextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/nanum_barun_gothic_light"
-                        android:text="15"
+                        android:layout_marginBottom="9dp"
+                        android:fontFamily="@font/nanum_barun_gothic_bold"
+                        android:text="오늘 받은 알림 갯수"
                         android:textColor="@color/colorPrimaryDark"
-                        android:textSize="54sp"
+                        android:textSize="15sp"
                         app:letterSpacing="2" />
 
                     <com.safeneck.safeneck.View.LetterSpacingTextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/fragment_main_daily_goal"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/nanum_barun_gothic_light"
-                        android:text=" 회"
+                        android:layout_marginBottom="5dp"
+                        android:fontFamily="@font/nanum_barun_gothic"
+                        android:text="일간 알림 목표치는 15회 입니다."
                         android:textColor="@color/colorPrimaryDark"
-                        android:textSize="30sp" />
+                        android:textSize="9sp"
+                        app:letterSpacing="2" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <com.safeneck.safeneck.View.LetterSpacingTextView
+                            android:id="@+id/fragment_main_daily_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nanum_barun_gothic_light"
+                            android:text="15"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="54sp"
+                            app:letterSpacing="2" />
+
+                        <com.safeneck.safeneck.View.LetterSpacingTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nanum_barun_gothic_light"
+                            android:text=" 회"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="30sp" />
+                    </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
+            </android.support.v7.widget.CardView>
 
-        <android.support.v7.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="150dp"
-            android:layout_marginStart="8dp"
-            android:layout_weight="1">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/box_solid_mint"
-                android:orientation="vertical"
-                android:paddingStart="15dp"
-                android:paddingTop="20dp">
-
-                <com.safeneck.safeneck.View.LetterSpacingTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="9dp"
-                    android:fontFamily="@font/nanum_barun_gothic_bold"
-                    android:text="주간 받은 알림 갯수"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="15sp"
-                    app:letterSpacing="2" />
-
-                <com.safeneck.safeneck.View.LetterSpacingTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:fontFamily="@font/nanum_barun_gothic"
-                    android:text="주간 알림 목표치는 70회 입니다."
-                    android:textColor="@color/colorWhite"
-                    android:textSize="9sp"
-                    app:letterSpacing="2" />
+            <android.support.v7.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="match_parent"
+                    android:background="@drawable/box_solid_mint"
+                    android:orientation="vertical"
+                    android:paddingStart="15dp"
+                    android:paddingTop="20dp">
 
                     <com.safeneck.safeneck.View.LetterSpacingTextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/nanum_barun_gothic_light"
-                        android:text="45"
+                        android:layout_marginBottom="9dp"
+                        android:fontFamily="@font/nanum_barun_gothic_bold"
+                        android:text="주간 받은 알림 갯수"
                         android:textColor="@color/colorWhite"
-                        android:textSize="54sp"
+                        android:textSize="15sp"
                         app:letterSpacing="2" />
 
                     <com.safeneck.safeneck.View.LetterSpacingTextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/fragment_main_weekly_goal"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/nanum_barun_gothic_light"
-                        android:text=" 회"
+                        android:layout_marginBottom="5dp"
+                        android:fontFamily="@font/nanum_barun_gothic"
+                        android:text="주간 알림 목표치는 70회 입니다."
                         android:textColor="@color/colorWhite"
-                        android:textSize="30sp" />
+                        android:textSize="9sp"
+                        app:letterSpacing="2" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <com.safeneck.safeneck.View.LetterSpacingTextView
+                            android:id="@+id/fragment_main_weekly_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nanum_barun_gothic_light"
+                            android:text="45"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="54sp"
+                            app:letterSpacing="2" />
+
+                        <com.safeneck.safeneck.View.LetterSpacingTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nanum_barun_gothic_light"
+                            android:text=" 회"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="30sp" />
+                    </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="74dp">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:layout_marginStart="@dimen/activity_horizontal_margin">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingEnd="50dp"
+                    android:paddingStart="50dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_chevron_left_black"
+                        android:tint="@color/colorPrimaryDark" />
+
+                    <com.safeneck.safeneck.View.LetterSpacingTextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="2017년 8월 04일"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="15sp"
+                        app:letterSpacing="1.5" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_chevron_right_black"
+                        android:tint="@color/colorPrimaryDark" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginBottom="20dp"
+            android:paddingEnd="48dp"
+            android:paddingStart="48dp">
+
+            <com.safeneck.safeneck.View.LetterSpacingTextView
+                android:id="@+id/fragment_main_btn_daily"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/selectable_box_mint"
+                android:fontFamily="@font/nanum_barun_gothic_bold"
+                android:gravity="center"
+                android:text="일간"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/fragment_main_btn_weekly"
+                app:letterSpacing="7" />
+
+            <com.safeneck.safeneck.View.LetterSpacingTextView
+                android:id="@+id/fragment_main_btn_weekly"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/selectable_box_mint"
+                android:fontFamily="@font/nanum_barun_gothic_bold"
+                android:gravity="center"
+                android:text="주간"
+                android:textColor="@color/colorPrimaryDark"
+                app:layout_constraintLeft_toRightOf="@id/fragment_main_btn_daily"
+                app:layout_constraintRight_toLeftOf="@id/fragment_main_btn_monthly"
+                app:letterSpacing="7" />
+
+            <com.safeneck.safeneck.View.LetterSpacingTextView
+                android:id="@+id/fragment_main_btn_monthly"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/selectable_box_mint"
+                android:fontFamily="@font/nanum_barun_gothic_bold"
+                android:gravity="center"
+                android:text="월간"
+                android:textColor="@color/colorPrimaryDark"
+                app:layout_constraintLeft_toRightOf="@id/fragment_main_btn_weekly"
+                app:layout_constraintRight_toRightOf="parent"
+                app:letterSpacing="7" />
+        </android.support.constraint.ConstraintLayout>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/bar_chart_background">
+
+            <com.safeneck.safeneck.View.BarChartView
+                android:id="@+id/fragment_main_barChart"
+                android:layout_width="wrap_content"
+                android:layout_height="220dp"
+                android:padding="20dp"
+                app:barColor="#00bfa5"
+                app:barDistance="24dp"
+                app:barRadius="3dp"
+                app:barWidth="32dp"
+                app:bottomTextColor="@color/colorPrimaryDark"
+                app:bottomTextSize="11sp"
+                app:underLineColor="#00bfa5"
+                app:underLineWidth="3dp"
+                app:valueTextColor="#ffffff"
+                app:valueTextSize="11sp" />
+        </HorizontalScrollView>
     </LinearLayout>
-</LinearLayout>
+</ScrollView>

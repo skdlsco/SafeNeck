@@ -10,9 +10,9 @@
 
     <com.safeneck.safeneck.View.LetterSpacingTextView
         android:id="@+id/text"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
+        android:gravity="right"
         android:fontFamily="@font/nanum_barun_gothic_bold"
         android:textColor="@color/colorOptionTitle"
         android:textSize="11sp"
