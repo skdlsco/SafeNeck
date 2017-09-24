@@ -1,5 +1,6 @@
 package com.safeneck.safeneck.Fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
@@ -16,11 +17,18 @@ import org.jetbrains.anko.textColor
 import java.util.*
 
 class MainFragment : Fragment() {
+    private val calendar = Calendar.getInstance()
+    private var month = calendar.get(Calendar.MONTH)
+    private var year = calendar.get(Calendar.YEAR)
+    private var day = calendar.get(Calendar.DAY_OF_MONTH)
 
     private val texts: IntArray = intArrayOf(R.id.fragment_main_btn_daily, R.id.fragment_main_btn_weekly, R.id.fragment_main_btn_monthly)
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view: View = inflater!!.inflate(R.layout.fragment_main, container, false)
+
+        setDate(view)
         view.fragment_main_btn_daily.isSelected = true
         view.fragment_main_btn_daily.setOnClickListener {
             setTextsProperty(0)
@@ -34,12 +42,23 @@ class MainFragment : Fragment() {
             setTextsProperty(2)
         }
 
-        view.fragment_main_date.setOnClickListener {
-            val calendar = Calendar.getInstance()
-            val dialog = DatePickerDialog.newInstance({ _, _, _, _ ->
 
-            }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
+        view.fragment_main_date.setOnClickListener {
+            val dialog = DatePickerDialog.newInstance({ _, year, month, day ->
+                calendar.set(year, month, day)
+                setDate(view)
+            }, year, month, day)
             dialog.show(activity.fragmentManager, "DatePickerDialog")
+        }
+
+        view.fragment_main_date_left.setOnClickListener {
+            calendar.add(Calendar.DATE, -1)
+            setDate(view)
+            view.fragment_main_date.text = "${year}년 ${month}월 ${day}일"
+        }
+        view.fragment_main_date_right.setOnClickListener {
+            calendar.add(Calendar.DATE, 1)
+            setDate(view)
         }
         val elements = ArrayList<BarChartView.Elements>()
         elements.add(BarChartView.Elements(2, "12시"))
@@ -57,6 +76,13 @@ class MainFragment : Fragment() {
 
     companion object {
         fun newInstance(): MainFragment = MainFragment()
+    }
+
+    private fun setDate(view: View) {
+        month = calendar.get(Calendar.MONTH)
+        year = calendar.get(Calendar.YEAR)
+        day = calendar.get(Calendar.DAY_OF_MONTH)
+        view.fragment_main_date.text = "${year}년 ${month}월 ${day}일"
     }
 
     private fun setTextsProperty(pos: Int) {

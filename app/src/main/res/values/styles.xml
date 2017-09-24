@@ -9,4 +9,8 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorPrimaryDark</item>
     </style>
+
+    <style name="AppTheme.Dialog" parent="AppTheme">
+        <item name="colorAccent">@color/colorHalfBlack</item>
+    </style>
 </resources>

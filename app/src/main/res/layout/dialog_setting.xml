@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="190dp"
+    android:layout_gravity="center"
+    android:background="@android:color/transparent"
+    android:orientation="vertical"
+    android:theme="@style/AppTheme.Dialog">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/box_solid_mint_radius_top"
+        android:orientation="vertical"
+        android:paddingBottom="15dp"
+        android:paddingEnd="15dp"
+        android:paddingStart="15dp"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <com.safeneck.safeneck.View.LetterSpacingTextView
+            android:id="@+id/dialog_setting_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:fontFamily="@font/nanum_barun_gothic"
+            android:textColor="@color/colorWhite"
+            android:textSize="17sp"
+            app:letterSpacing="3"
+            tools:text="주간 목표 알림 개수 설정" />
+
+        <com.safeneck.safeneck.View.LetterSpacingTextView
+            android:id="@+id/dialog_setting_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nanum_barun_gothic"
+            android:textColor="@color/colorHalfBlack"
+            android:textSize="11sp"
+            app:letterSpacing="3"
+            tools:text="주간 경고 최대수는 700개입니다" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:background="@drawable/box_solid_white_radius_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/dialog_setting_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="50dp"
+            android:alpha="0.5"
+            android:hint="@string/app_name"
+            android:padding="10dp"
+            android:textColor="@color/colorBlack"
+            android:textSize="13sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true">
+
+            <Button
+                android:id="@+id/dialog_setting_btn_negative"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/nanum_barun_gothic_bold"
+                android:text="취소하기"
+                android:textColor="@color/colorHalfBlack"
+                android:textSize="11sp" />
+
+            <Button
+                android:id="@+id/dialog_setting_btn_positive"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/nanum_barun_gothic_bold"
+                android:text="변경하기"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="11sp" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>
