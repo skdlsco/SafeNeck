@@ -1,6 +1,5 @@
 package com.safeneck.safeneck.Fragment
 
-import android.app.DatePickerDialog
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
@@ -10,9 +9,11 @@ import android.view.ViewGroup
 import com.safeneck.safeneck.R
 import com.safeneck.safeneck.View.BarChartView
 import com.safeneck.safeneck.View.LetterSpacingTextView
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog
 import kotlinx.android.synthetic.main.fragment_main.view.*
 import org.jetbrains.anko.support.v4.find
 import org.jetbrains.anko.textColor
+import java.util.*
 
 class MainFragment : Fragment() {
 
@@ -31,6 +32,14 @@ class MainFragment : Fragment() {
 
         view.fragment_main_btn_monthly.setOnClickListener {
             setTextsProperty(2)
+        }
+
+        view.fragment_main_date.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val dialog = DatePickerDialog.newInstance({ _, _, _, _ ->
+
+            }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
+            dialog.show(activity.fragmentManager, "DatePickerDialog")
         }
         val elements = ArrayList<BarChartView.Elements>()
         elements.add(BarChartView.Elements(2, "12시"))
@@ -64,3 +73,4 @@ class MainFragment : Fragment() {
         }
     }
 }
+

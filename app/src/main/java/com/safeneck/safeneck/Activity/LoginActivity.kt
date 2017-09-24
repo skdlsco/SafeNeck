@@ -19,6 +19,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        startActivity<MainActivity>()
 
         login_btn_back.setOnClickListener {
             onBackPressed()
@@ -35,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
                                 Log.d("token", "" + response!!.body()!!.data.token)
                                 val user: User = response.body()!!
                                 Log.d("token", "" + user.data.token)
-                                startActivity<MainActivity>()
+                                return
                             }
 
                         }
