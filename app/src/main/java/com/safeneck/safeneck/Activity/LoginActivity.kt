@@ -20,7 +20,6 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        startActivity<MainActivity>()
 
         login_btn_back.setOnClickListener {
             onBackPressed()
@@ -35,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
                         if (response!!.code() == 200) {
                             if (response.body()!!.status == 200) {
                                 val dataManager = DataManager(this@LoginActivity)
-                                dataManager.setToken(response.body()!!.data.token)
+                                dataManager.token = (response.body()!!.data.token)
                                 startActivity<MainActivity>()
                                 return
                             }

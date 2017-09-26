@@ -5,8 +5,6 @@ import com.safeneck.safeneck.Models.Setting
 import com.safeneck.safeneck.Models.User
 import okhttp3.ResponseBody
 import retrofit2.Call
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
 
 /**
@@ -33,7 +31,7 @@ interface RetrofitInterface {
 
 //    @POST("/alarm/checkDailyAward")
 //    @FormUrlEncoded
-//    fun checkDailyAward(@Field("token") token: String): Call<ResponseBody>
+//    fun checkDailyAward(Field("token") token: String): Call<ResponseBody>
 //
 //    @POST("/alarm/checkWeeklyAward")
 //    @FormUrlEncoded
@@ -53,15 +51,14 @@ interface RetrofitInterface {
     fun setReportTime(@Field("token") token: String, @Field("time") time: String): Call<Setting>
 
     @GET("/setting/list")
-    @FormUrlEncoded
-    fun getSettingList(@Field("token") token: String): Call<Setting>
+    fun getSettingList(@Query("token") token: String): Call<Setting>
 
     //Neck
-    @POST
+    @POST("/neck/checkToday")
     @FormUrlEncoded
     fun checkToday(@Field("token") token: String): Call<ResponseBody>
 
-    @POST
+    @POST("/neck/checkDay")
     @FormUrlEncoded
     fun checkDay(@Field("token") token: String): Call<ResponseBody>
 }

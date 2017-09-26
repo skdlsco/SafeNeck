@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.safeneck.safeneck.Models.Setting
 import com.safeneck.safeneck.R
 import com.safeneck.safeneck.SettingDialog
+import com.safeneck.safeneck.StatusDialog
 import com.safeneck.safeneck.Utils.DataManager
 import com.safeneck.safeneck.Utils.NetworkHelper
 import kotlinx.android.synthetic.main.activity_login.*
@@ -23,9 +24,17 @@ class OptionFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_option, container, false)
         val dataManager = DataManager(context)
-        view.option_vibrate_set.setOnCheckedChangeListener({ _, b ->
-            dataManager.setVibrateOn(b)
-        })
+
+        view.option_vibrate_set.isChecked = dataManager.isVibrateOn
+        view.option_sleep_mode.isChecked = dataManager.isSleepMode
+
+        view.option_vibrate_set.setOnCheckedChangeListener { _, b ->
+            dataManager.isVibrateOn = b
+        }
+
+        view.option_sleep_mode.setOnCheckedChangeListener { button, b ->
+            dataManager.isSleepMode = b
+        }
 
         view.option_weekly_goal_count_set.setOnClickListener {
             val dialog = SettingDialog(context, "ex) 27", "주간 목표 알림 개수 설정", "주간 경고 최대수는 700개입니다")
@@ -40,14 +49,14 @@ class OptionFragment : Fragment() {
                         if (edit.toInt() <= 0 || edit.toInt() >= 700)
                             Toast.makeText(context, "값이 이상합니다", Toast.LENGTH_SHORT).show()
                         else if (NetworkHelper.returnNetworkState(context)) {
-                            NetworkHelper.networkInstance.setWeeklyAward(dataManager.getToken(), edit).enqueue(object : Callback<Setting> {
+                            NetworkHelper.networkInstance.setWeeklyAward(dataManager.token, edit).enqueue(object : Callback<Setting> {
                                 override fun onFailure(call: Call<Setting>?, t: Throwable?) {
                                 }
 
                                 override fun onResponse(call: Call<Setting>?, response: Response<Setting>?) {
                                     if (response?.code() == 200) {
                                         if (response.body()?.status == 200) {
-
+                                            dataManager.weeklyAward = response.body()?.data?.weeklyAward?.toInt()!!
                                         }
                                     }
                                 }
@@ -77,7 +86,7 @@ class OptionFragment : Fragment() {
                             Toast.makeText(context, "값이 이상합니다", Toast.LENGTH_SHORT).show()
 
                         } else if (NetworkHelper.returnNetworkState(context)) {
-                            NetworkHelper.networkInstance.setDailyAward(dataManager.getToken(), edit).enqueue(object : Callback<Setting> {
+                            NetworkHelper.networkInstance.setDailyAward(dataManager.token, edit).enqueue(object : Callback<Setting> {
                                 override fun onFailure(call: Call<Setting>?, t: Throwable?) {
                                 }
 
@@ -112,7 +121,7 @@ class OptionFragment : Fragment() {
                         if (edit.toInt() <= 1 || edit.toInt() >= 10)
                             Toast.makeText(context, "값이 이상합니다", Toast.LENGTH_SHORT).show()
                         else
-                            dataManager.setVibrateTime(edit.toInt())
+                            dataManager.vibrateTime = edit.toInt()
                     } catch (e: NumberFormatException) {
                         Toast.makeText(context, "값이 이상합니다", Toast.LENGTH_SHORT).show()
                     }
@@ -132,11 +141,10 @@ class OptionFragment : Fragment() {
 
                 override fun onPositiveClick(view: View, edit: String) {
                     try {
-                        edit.toInt()
                         if (edit.toInt() < 1 || edit.toInt() > 24)
                             Toast.makeText(context, "값이 이상합니다", Toast.LENGTH_SHORT).show()
                         else if (NetworkHelper.returnNetworkState(context)) {
-                            NetworkHelper.networkInstance.setReportTime(dataManager.getToken(), edit).enqueue(object : Callback<Setting> {
+                            NetworkHelper.networkInstance.setReportTime(dataManager.token, edit).enqueue(object : Callback<Setting> {
                                 override fun onFailure(call: Call<Setting>?, t: Throwable?) {
                                 }
 
@@ -153,15 +161,15 @@ class OptionFragment : Fragment() {
                         Toast.makeText(context, "값이 이상합니다", Toast.LENGTH_SHORT).show()
                     }
                 }
-
             }
             dialog.show()
         }
+        view.option_status_live.setOnClickListener {
+            val statusDialog = StatusDialog(context)
+            statusDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            statusDialog.show()
+        }
         return view
-    }
-
-    private fun isRequestOk(): Boolean {
-        return true
     }
 
     companion object {

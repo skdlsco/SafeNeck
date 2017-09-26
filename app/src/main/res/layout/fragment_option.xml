@@ -84,62 +84,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanum_barun_gothic_bold"
-                    android:text="자세 경고 알림 설정"
-                    android:textColor="@color/colorOptionTitle"
-                    android:textSize="15dp"
-                    app:letterSpacing="1" />
-
-                <com.safeneck.safeneck.View.LetterSpacingTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:fontFamily="@font/nanum_barun_gothic_bold"
-                    android:text="자세 경고에 대한 자세의 효용범위를 설합니다"
-                    android:textColor="@color/colorOptionContent"
-                    android:textSize="9dp"
-                    app:letterSpacing="1" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-            <Button
-                android:id="@+id/option_attitude_alert_set"
-                android:layout_width="64dp"
-                android:layout_height="26dp"
-                android:background="@drawable/box_stroke_gray"
-                android:text="변 경"
-                android:textColor="@color/colorOptionTitle"
-                android:textSize="9dp" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginEnd="@dimen/activity_horizontal_margin"
-            android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:background="@color/colorOptionBar" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="78dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingEnd="@dimen/activity_horizontal_margin"
-            android:paddingStart="@dimen/activity_horizontal_margin">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:orientation="vertical">
-
-                <com.safeneck.safeneck.View.LetterSpacingTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/nanum_barun_gothic_bold"
                     android:text="진동 설정"
                     android:textColor="@color/colorOptionTitle"
                     android:textSize="15dp"
@@ -339,6 +283,98 @@
                 android:text="변 경"
                 android:textColor="@color/colorOptionTitle"
                 android:textSize="9dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/option_status_live"
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingEnd="@dimen/activity_horizontal_margin"
+            android:paddingStart="@dimen/activity_horizontal_margin">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <com.safeneck.safeneck.View.LetterSpacingTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanum_barun_gothic_bold"
+                    android:text="실시간 상태 확인"
+                    android:textColor="@color/colorOptionTitle"
+                    android:textSize="15dp"
+                    app:letterSpacing="1" />
+
+                <com.safeneck.safeneck.View.LetterSpacingTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/nanum_barun_gothic_bold"
+                    android:text="이 칸을 누르면 실시간으로 상태 확인을 합니다"
+                    android:textColor="@color/colorOptionContent"
+                    android:textSize="9dp"
+                    app:letterSpacing="1" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingEnd="@dimen/activity_horizontal_margin"
+            android:paddingStart="@dimen/activity_horizontal_margin">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <com.safeneck.safeneck.View.LetterSpacingTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanum_barun_gothic_bold"
+                    android:text="수면 설정"
+                    android:textColor="@color/colorOptionTitle"
+                    android:textSize="15dp"
+                    app:letterSpacing="1" />
+
+                <com.safeneck.safeneck.View.LetterSpacingTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/nanum_barun_gothic_bold"
+                    android:text="수면 모드 On/Off 옵션을 설정합니다"
+                    android:textColor="@color/colorOptionContent"
+                    android:textSize="9dp"
+                    app:letterSpacing="1" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/option_sleep_mode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="7dp"
+                android:textColor="@color/colorOptionTitle"
+                android:textSize="9dp"
+                android:thumb="@drawable/ic_switch_thumb"
+                app:switchMinWidth="50dp"
+                app:trackTint="#d5d5d5" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

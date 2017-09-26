@@ -7,13 +7,19 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.safeneck.safeneck.Models.Alarm
 import com.safeneck.safeneck.R
+import com.safeneck.safeneck.Utils.DataManager
+import com.safeneck.safeneck.Utils.NetworkHelper
 import com.safeneck.safeneck.View.BarChartView
 import com.safeneck.safeneck.View.LetterSpacingTextView
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog
 import kotlinx.android.synthetic.main.fragment_main.view.*
 import org.jetbrains.anko.support.v4.find
 import org.jetbrains.anko.textColor
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.*
 
 class MainFragment : Fragment() {
@@ -28,6 +34,7 @@ class MainFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         val view: View = inflater!!.inflate(R.layout.fragment_main, container, false)
 
+        val dataManager = DataManager(context)
         setDate(view)
         view.fragment_main_btn_daily.isSelected = true
         view.fragment_main_btn_daily.setOnClickListener {
@@ -71,11 +78,41 @@ class MainFragment : Fragment() {
         elements.add(BarChartView.Elements(11, "19시"))
         elements.add(BarChartView.Elements(3, "20시"))
         view.fragment_main_barChart.elements = elements
+
+        if (NetworkHelper.returnNetworkState(context)) {
+            val token = dataManager.token
+            NetworkHelper.networkInstance.getData(token).enqueue(object : Callback<Alarm> {
+                override fun onResponse(call: Call<Alarm>?, response: Response<Alarm>?) {
+                    if (response?.code() == 200) {
+                        if (response.body()?.status == 200) {
+                            val todayAlarm = response.body()?.data!![0].todayAlarm
+                            val weekAlarm = response.body()?.data!![0].weekAlarm
+
+                            view.fragment_main_daily_count.text = todayAlarm
+                            view.fragment_main_weekly_count.text = weekAlarm
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<Alarm>?, t: Throwable?) {
+                }
+            })
+        }
+        setAwardText(view)
         return view
     }
 
     companion object {
         fun newInstance(): MainFragment = MainFragment()
+    }
+
+    private fun setAwardText(view: View) {
+        val dataManager = DataManager(context)
+        val dailyAward = dataManager.dailyAward
+        view.fragment_main_daily_goal?.text = "일간 알림 개수 목표치는 ${dailyAward}회입니다"
+
+        val weeklyAward = dataManager.weeklyAward
+        view.fragment_main_weekly_goal?.text = "주간 알림 개수 목표치는 ${weeklyAward}회입니다"
     }
 
     private fun setDate(view: View) {
