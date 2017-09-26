@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import com.safeneck.safeneck.Models.User
 import com.safeneck.safeneck.R
+import com.safeneck.safeneck.Utils.DataManager
 import com.safeneck.safeneck.Utils.NetworkHelper
 import com.safeneck.safeneck.Utils.RetrofitInterface
 import kotlinx.android.synthetic.main.activity_login.*
@@ -33,9 +34,9 @@ class LoginActivity : AppCompatActivity() {
                     override fun onResponse(call: Call<User>?, response: Response<User>?) {
                         if (response!!.code() == 200) {
                             if (response.body()!!.status == 200) {
-                                Log.d("token", "" + response!!.body()!!.data.token)
-                                val user: User = response.body()!!
-                                Log.d("token", "" + user.data.token)
+                                val dataManager = DataManager(this@LoginActivity)
+                                dataManager.setToken(response.body()!!.data.token)
+                                startActivity<MainActivity>()
                                 return
                             }
 
