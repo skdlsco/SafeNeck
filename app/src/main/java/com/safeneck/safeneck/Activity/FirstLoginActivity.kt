@@ -15,9 +15,7 @@ import android.widget.Spinner
 import android.widget.Toast
 import com.safeneck.safeneck.Adapter.SpinnerAgeAdapter
 import com.safeneck.safeneck.Adapter.SpinnerWorkAdapter
-import com.safeneck.safeneck.TutorialActivity
 import com.safeneck.safeneck.Utils.NetworkHelper
-import com.safeneck.safeneck.Utils.RetrofitInterface
 import com.safeneck.safeneck.databinding.ActivityFirstLoginBinding
 import okhttp3.ResponseBody
 import org.json.JSONObject

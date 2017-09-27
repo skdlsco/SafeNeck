@@ -32,7 +32,12 @@ class DataManager(context: Context) {
             editor.putInt("vibrateTime", vibrateTime)
             editor.apply()
         }
-
+    var reportTime: Int
+        get() = preferences.getInt("reportTime", 22)
+        set(t) {
+            editor.putInt("reportTime", t)
+            editor.apply()
+        }
     var dailyAward: Int
         get() = preferences.getInt("dailyAward", 1)
         set(award) {

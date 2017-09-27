@@ -59,7 +59,6 @@ interface RetrofitInterface {
     @FormUrlEncoded
     fun checkToday(@Field("token") token: String): Call<ResponseBody>
 
-    @POST("/neck/checkDay")
-    @FormUrlEncoded
-    fun checkDay(@Field("token") token: String): Call<ResponseBody>
+    @GET("/neck/checkDay")
+    fun checkDay(@Query("token") token: String): Call<ResponseBody>
 }

@@ -99,7 +99,7 @@ class MainFragment : Fragment() {
                             val data = json.getJSONArray("data").getJSONObject(0)
                             dataManager.weeklyAward = data.getInt("weeklyAward")
                             dataManager.dailyAward = data.getInt("dailyAward")
-//                            dataManager.vibrateTime = data.getInt("time")
+                            dataManager.reportTime = data.getInt("reportTime")
                         }
                     }
                 }
@@ -158,9 +158,9 @@ class MainFragment : Fragment() {
         }
 
         val calendar = Calendar.getInstance()
-        if (dataManager.vibrateTime <= calendar.get(Calendar.HOUR_OF_DAY))
+        if (dataManager.reportTime <= calendar.get(Calendar.HOUR_OF_DAY))
             calendar.add(Calendar.DATE, 1)
-        calendar.set(Calendar.HOUR_OF_DAY, dataManager.vibrateTime)
+        calendar.set(Calendar.HOUR_OF_DAY, dataManager.reportTime)
         calendar.set(Calendar.MINUTE, 0)
         calendar.set(Calendar.SECOND, 0)
         val intent = Intent(context, ReportService::class.java)

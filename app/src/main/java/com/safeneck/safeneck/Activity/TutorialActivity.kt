@@ -1,9 +1,10 @@
-package com.safeneck.safeneck
+package com.safeneck.safeneck.Activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.view.ViewPager
 import com.safeneck.safeneck.Adapter.TutorialAdapter
+import com.safeneck.safeneck.R
 import kotlinx.android.synthetic.main.activity_tutorial.*
 
 class TutorialActivity : AppCompatActivity() {

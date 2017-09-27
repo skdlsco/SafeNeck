@@ -1,5 +1,6 @@
 package com.safeneck.safeneck.Fragment
 
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
@@ -13,6 +14,7 @@ import com.safeneck.safeneck.Utils.NetworkHelper
 import com.safeneck.safeneck.View.PieChartView
 import kotlinx.android.synthetic.main.fragment_daily.view.*
 import okhttp3.ResponseBody
+import org.jetbrains.anko.textColor
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -49,9 +51,115 @@ class DailyFragment : Fragment() {
                 override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
                 }
             })
-//            NetworkHelper.networkInstance.checkDay(token).enqueue()
+            NetworkHelper.networkInstance.checkDay(token).enqueue(object : Callback<ResponseBody> {
+                override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>?) {
+                    if (response?.code() == 200) {
+                        val json = JSONObject(response.body()!!.string())
+                        val status = json.getInt("status")
+                        if (status == 200) {
+                            setToday(view, json.getInt("today"))
+                            setYesterday(view, json.getInt("yesterday"))
+                            setDoubleday(view, json.getInt("doubleday"))
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
+                    Log.e("asdfdsdf", "" + t.toString() + "\n" + t!!.message)
+                }
+            })
         }
         return view
+    }
+
+    fun setToday(view: View, status: Int) {
+        when (status) {
+            1 -> {
+                view.daily_status_left_img.setImageResource(R.drawable.ic_daily_sogood)
+                view.daily_status_left_text_status.text = "정상"
+                view.daily_status_left_text_status.textColor = context.resources.getColor(R.color.colorVeryGood)
+            }
+            2 -> {
+                view.daily_status_left_img.setImageResource(R.drawable.ic_daily_good)
+                view.daily_status_left_text_status.text = "주의"
+                view.daily_status_left_text_status.textColor = context.resources.getColor(R.color.colorGood)
+            }
+            3 -> {
+                view.daily_status_left_img.setImageResource(R.drawable.ic_daily_standard)
+                view.daily_status_left_text_status.text = "경고"
+                view.daily_status_left_text_status.textColor = context.resources.getColor(R.color.colorCommon)
+            }
+            4 -> {
+                view.daily_status_left_img.setImageResource(R.drawable.ic_daily_bad)
+                view.daily_status_left_text_status.text = "나쁨"
+                view.daily_status_left_text_status.textColor = context.resources.getColor(R.color.colorBad)
+            }
+            5 -> {
+                view.daily_status_left_img.setImageResource(R.drawable.ic_daily_sobad)
+                view.daily_status_left_text_status.text = "매우 나쁨"
+                view.daily_status_left_text_status.textColor = context.resources.getColor(R.color.colorVeryBad)
+            }
+        }
+    }
+
+    fun setYesterday(view: View, status: Int) {
+        when (status) {
+            1 -> {
+                view.daily_status_center_img.setImageResource(R.drawable.ic_daily_sogood)
+                view.daily_status_center_text_status.text = "정상"
+                view.daily_status_center_text_status.textColor = context.resources.getColor(R.color.colorVeryGood)
+            }
+            2 -> {
+                view.daily_status_center_img.setImageResource(R.drawable.ic_daily_good)
+                view.daily_status_center_text_status.text = "주의"
+                view.daily_status_center_text_status.textColor = context.resources.getColor(R.color.colorVeryGood)
+            }
+            3 -> {
+                view.daily_status_center_img.setImageResource(R.drawable.ic_daily_standard)
+                view.daily_status_center_text_status.text = "경고"
+                view.daily_status_center_text_status.textColor = context.resources.getColor(R.color.colorVeryGood)
+            }
+            4 -> {
+                view.daily_status_center_img.setImageResource(R.drawable.ic_daily_bad)
+                view.daily_status_center_text_status.text = "나쁨"
+                view.daily_status_center_text_status.textColor = context.resources.getColor(R.color.colorBad)
+            }
+            5 -> {
+                view.daily_status_center_img.setImageResource(R.drawable.ic_daily_sobad)
+                view.daily_status_center_text_status.text = "매우 나쁨"
+                view.daily_status_center_text_status.textColor = context.resources.getColor(R.color.colorVeryBad)
+            }
+        }
+    }
+
+    fun setDoubleday(view: View, status: Int) {
+        when (status) {
+            1 -> {
+                view.daily_status_right_img.setImageResource(R.drawable.ic_daily_sogood)
+                view.daily_status_right_text_status.text = "정상"
+                view.daily_status_right_text_status.textColor = context.resources.getColor(R.color.colorVeryGood)
+            }
+            2 -> {
+                view.daily_status_right_img.setImageResource(R.drawable.ic_daily_good)
+                view.daily_status_right_text_status.text = "주의"
+                view.daily_status_right_text_status.textColor = context.resources.getColor(R.color.colorGood)
+            }
+            3 -> {
+                view.daily_status_right_img.setImageResource(R.drawable.ic_daily_standard)
+                view.daily_status_right_text_status.text = "경고"
+                view.daily_status_right_text_status.textColor = context.resources.getColor(R.color.colorCommon)
+            }
+            4 -> {
+                view.daily_status_right_img.setImageResource(R.drawable.ic_daily_bad)
+                view.daily_status_right_text_status.text = "나쁨"
+                view.daily_status_right_text_status.textColor = context.resources.getColor(R.color.colorBad)
+            }
+            5 -> {
+                view.daily_status_right_img.setImageResource(R.drawable.ic_daily_sobad)
+                view.daily_status_right_text_status.text = "매우 나쁨"
+                view.daily_status_right_text_status.textColor = context.resources.getColor(R.color.colorVeryBad)
+            }
+        }
     }
 
     companion object {

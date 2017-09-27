@@ -2,13 +2,11 @@ package com.safeneck.safeneck.Activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import com.safeneck.safeneck.Models.User
 import com.safeneck.safeneck.R
 import com.safeneck.safeneck.Utils.DataManager
 import com.safeneck.safeneck.Utils.NetworkHelper
-import com.safeneck.safeneck.Utils.RetrofitInterface
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
 import retrofit2.Call
