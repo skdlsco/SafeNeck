@@ -34,6 +34,7 @@
         <service
             android:name=".BluetoothService"
             android:enabled="true" />
+        <service android:name=".ReportService" />
     </application>
 
 </manifest>

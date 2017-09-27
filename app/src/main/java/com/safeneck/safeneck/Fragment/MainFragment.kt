@@ -21,6 +21,12 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Context.ALARM_SERVICE
+import android.content.Intent
+import com.safeneck.safeneck.ReportService
+
 
 class MainFragment : Fragment() {
     private val calendar = Calendar.getInstance()
@@ -98,6 +104,17 @@ class MainFragment : Fragment() {
                 }
             })
         }
+        val calendar = Calendar.getInstance()
+//        if (dataManager.vibrateTime >= calendar.get(Calendar.HOUR))
+//            calendar.add(Calendar.DATE, 1)
+//        calendar.set(Calendar.HOUR, dataManager.vibrateTime)
+//        calendar.set(Calendar.MINUTE, 0)
+//        calendar.set(Calendar.SECOND, 0)
+        val intent = Intent(context, ReportService::class.java)
+        val alarmManager = context.getSystemService(ALARM_SERVICE) as AlarmManager
+        val pendingIntent = PendingIntent.getService(context, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.timeInMillis + 10000, pendingIntent)
+
         setAwardText(view)
         return view
     }
