@@ -20,7 +20,7 @@ class DataManager(context: Context) {
 
 
     var isVibrateOn: Boolean
-        get() = preferences.getBoolean("vibrateOn", false)
+        get() = preferences.getBoolean("vibrateOn", true)
         set(b) {
             editor.putBoolean("vibrateOn", b)
             editor.apply()

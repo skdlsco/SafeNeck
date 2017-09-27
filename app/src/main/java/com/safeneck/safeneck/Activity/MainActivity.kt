@@ -1,5 +1,6 @@
 package com.safeneck.safeneck.Activity
 
+import android.Manifest
 import android.bluetooth.*
 import android.content.Context
 import android.content.Intent
@@ -15,24 +16,17 @@ import android.view.View
 import android.widget.Toast
 import com.safeneck.safeneck.Adapter.MainViewPagerAdapter
 import com.safeneck.safeneck.BluetoothService
-import com.safeneck.safeneck.Models.Setting
 import com.safeneck.safeneck.R
-import com.safeneck.safeneck.Utils.DataManager
-import com.safeneck.safeneck.Utils.NetworkHelper
 import com.safeneck.safeneck.databinding.ActivityMainBinding
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import android.support.v4.app.ActivityCompat
+import android.content.pm.PackageManager
 
 
 class MainActivity : AppCompatActivity() {
     private lateinit var viewPager: ViewPager
     private var mBluetoothAdapter: BluetoothAdapter? = null
-    private var isScanning = false
     private var mHandler: Handler = Handler()
     private var mBtDevice: BluetoothDevice? = null
-    private var uuid = "0000ff31-0000-1000-8000-00805f9b34fb"
-    private var uuidservice = "0000ff30-0000-1000-8000-00805f9b34fb"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -59,24 +53,11 @@ class MainActivity : AppCompatActivity() {
         })
         viewPager.currentItem = 1
 
-        val dataManager = DataManager(this)
-        if (NetworkHelper.returnNetworkState(this)) {
-            NetworkHelper.networkInstance.getSettingList(dataManager.token).enqueue(object : Callback<Setting> {
-                override fun onResponse(call: Call<Setting>?, response: Response<Setting>?) {
-                    if (response?.code() == 200) {
-                        if (response.body()?.status == 200) {
-                            dataManager.dailyAward = response.body()?.data?.dailyAward?.toInt()!!
-                            dataManager.weeklyAward = response.body()?.data?.weeklyAward?.toInt()!!
-                        }
-                    }
-                }
-
-                override fun onFailure(call: Call<Setting>?, t: Throwable?) {
-                }
-
-            })
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION), REQUEST_ENABLE_LOCATION)
+        } else {
+            getBtAdapter()
         }
-        getBtAdapter()
     }
 
     private var mLeScanCallback: BluetoothAdapter.LeScanCallback = BluetoothAdapter.LeScanCallback { btDevice, p1, p2 ->
@@ -99,27 +80,30 @@ class MainActivity : AppCompatActivity() {
 
     private fun scanLeDevice(enable: Boolean) {
         if (enable) {
+            mBluetoothAdapter?.startLeScan(mLeScanCallback)
             mHandler.postDelayed({
                 mBluetoothAdapter?.stopLeScan(mLeScanCallback)
             }, SCAN_PERIOD)
-            isScanning = true
-            mBluetoothAdapter?.startLeScan(mLeScanCallback)
         } else {
             mBluetoothAdapter?.stopLeScan(mLeScanCallback)
-            isScanning = false
         }
     }
 
 
     private fun getBtAdapter() {
-        val bluetoothManager = getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
-        mBluetoothAdapter = bluetoothManager.adapter
-        if (mBluetoothAdapter == null || !mBluetoothAdapter!!.isEnabled) {
-            val enableBtIntent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
-            startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT)
-        } else {
-            scanLeDevice(true)
-        }
+        val thread = Thread(Runnable {
+
+            val bluetoothManager = getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
+            mBluetoothAdapter = bluetoothManager.adapter
+            if (mBluetoothAdapter == null || !mBluetoothAdapter!!.isEnabled) {
+                val enableBtIntent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
+                startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT)
+            } else {
+
+                scanLeDevice(true)
+            }
+        })
+        thread.start()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -129,6 +113,16 @@ class MainActivity : AppCompatActivity() {
                 getBtAdapter()
             } else {
                 Toast.makeText(applicationContext, "블루투스 연결 실패", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            REQUEST_ENABLE_LOCATION -> {
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED || grantResults[1] == PackageManager.PERMISSION_GRANTED)
+                    getBtAdapter()
             }
         }
     }
@@ -148,6 +142,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
+        private val REQUEST_ENABLE_LOCATION = 1
         private val REQUEST_ENABLE_BT = 0
         private val SCAN_PERIOD: Long = 3000
     }

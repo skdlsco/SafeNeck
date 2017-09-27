@@ -5,7 +5,7 @@ package com.safeneck.safeneck.Models
  */
 class Setting(var status: Int, var data: data) {
     companion object {
-        class data(var token: String, var reportTime: String, var dailyAward: String, var weeklyAward: String)
+        class data(var time: String, var weeklyAward: String, var dailyAward: String)
 
     }
 }

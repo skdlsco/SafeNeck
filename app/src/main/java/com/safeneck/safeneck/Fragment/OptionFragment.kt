@@ -56,7 +56,7 @@ class OptionFragment : Fragment() {
                                 override fun onResponse(call: Call<Setting>?, response: Response<Setting>?) {
                                     if (response?.code() == 200) {
                                         if (response.body()?.status == 200) {
-                                            dataManager.weeklyAward = response.body()?.data?.weeklyAward?.toInt()!!
+                                            dataManager.weeklyAward = edit.toInt()
                                         }
                                     }
                                 }
@@ -93,7 +93,7 @@ class OptionFragment : Fragment() {
                                 override fun onResponse(call: Call<Setting>?, response: Response<Setting>?) {
                                     if (response?.code() == 200) {
                                         if (response.body()?.status == 200) {
-
+                                            dataManager.dailyAward = edit.toInt()
                                         }
                                     }
                                 }
@@ -151,7 +151,7 @@ class OptionFragment : Fragment() {
                                 override fun onResponse(call: Call<Setting>?, response: Response<Setting>?) {
                                     if (response?.code() == 200) {
                                         if (response.body()?.status == 200) {
-
+                                            dataManager.vibrateTime = edit.toInt()
                                         }
                                     }
                                 }

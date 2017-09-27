@@ -14,6 +14,7 @@
         <com.safeneck.safeneck.View.LetterSpacingTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/nanum_barun_gothic"
             android:text="실시간 자세 상태 확인"
             android:textColor="@color/colorWhite"
             android:textSize="20sp" />
@@ -24,10 +25,23 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:src="@drawable/ic_daily_good"
             android:id="@+id/dialog_status_img"
             android:layout_width="130dp"
             android:layout_height="130dp"
-            android:layout_centerInParent="true" />
+            android:layout_marginTop="45dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_daily_sogood" />
+
+        <com.safeneck.safeneck.View.LetterSpacingTextView
+            android:id="@+id/dialog_status_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dialog_status_img"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="13dp"
+            android:fontFamily="@font/nanum_barun_gothic_bold"
+            android:text="정상"
+            android:textColor="@color/colorVeryGood"
+            android:textSize="20sp" />
     </RelativeLayout>
 </LinearLayout>

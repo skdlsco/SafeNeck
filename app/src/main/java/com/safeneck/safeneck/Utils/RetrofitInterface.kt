@@ -29,13 +29,14 @@ interface RetrofitInterface {
     @GET("/alarm/getData")
     fun getData(@Query("token") token: String): Call<Alarm>
 
-//    @POST("/alarm/checkDailyAward")
-//    @FormUrlEncoded
-//    fun checkDailyAward(Field("token") token: String): Call<ResponseBody>
-//
-//    @POST("/alarm/checkWeeklyAward")
-//    @FormUrlEncoded
-//    fun checkWeeklyAward(@Field("token") token: String): Call<ResponseBody>
+    @GET("/alarm/circleGraph")
+    fun getCircleGraph(@Query("token") token: String): Call<ResponseBody>
+
+    @GET("/alarm/bafGraph")
+    fun getBarGraph(@Query("token") token: String): Call<ResponseBody>
+
+    @GET("/alarm/saveUserNeck")
+    fun saveUserNeck(@Query("token") token: String): Call<ResponseBody>
 
     //Setting
     @POST("/setting/dailyAward")
@@ -51,7 +52,7 @@ interface RetrofitInterface {
     fun setReportTime(@Field("token") token: String, @Field("time") time: String): Call<Setting>
 
     @GET("/setting/list")
-    fun getSettingList(@Query("token") token: String): Call<Setting>
+    fun getSettingList(@Query("token") token: String): Call<ResponseBody>
 
     //Neck
     @POST("/neck/checkToday")

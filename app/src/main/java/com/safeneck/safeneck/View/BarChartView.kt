@@ -131,11 +131,13 @@ class BarChartView : View {
     }
 
     private fun setMaxOfValue() {
-        maxOfValue = elements.first().value
-        elements
-                .asSequence()
-                .filter { maxOfValue < it.value }
-                .forEach { maxOfValue = it.value }
+        if(elements.isNotEmpty()){
+            maxOfValue = elements.first().value
+            elements
+                    .asSequence()
+                    .filter { maxOfValue < it.value }
+                    .forEach { maxOfValue = it.value }
+        }
     }
 
     class Elements(var value: Int, var bottomText: String)

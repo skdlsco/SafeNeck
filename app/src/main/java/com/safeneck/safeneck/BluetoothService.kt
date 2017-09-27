@@ -12,6 +12,12 @@ import android.util.Log
 import java.util.*
 import android.os.PowerManager
 import com.safeneck.safeneck.Utils.DataManager
+import com.safeneck.safeneck.Utils.NetworkHelper
+import okhttp3.ResponseBody
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 /**
  * Created by eka on 2017. 9. 19..
@@ -20,10 +26,11 @@ class BluetoothService : Service() {
     private var mBluetoothAdapter: BluetoothAdapter? = null
     private var mBluetoothGatt: BluetoothGatt? = null
     private var mHandler = Handler()
-    private var string = ""
+    //    private var string = ""
     private var address = ""
-    private var dataIndex = 0
+    //    private var dataIndex = 0
     private var isNotificationOk = true
+
     override fun onBind(p0: Intent?): IBinder? {
         return null
     }
@@ -55,7 +62,7 @@ class BluetoothService : Service() {
     private fun setNotification() {
         val services = mBluetoothGatt!!.services
         for (service in services!!) {
-            Log.e("uuid", "" + service.uuid.toString() + "\n" + service.characteristics.size)
+            Log.e("uuid", "" + service.uuid.toString())
             if (service.uuid.toString() == "0000ffe0-0000-1000-8000-00805f9b34fb") {
                 val char = service.getCharacteristic(UUID.fromString("0000ffe1-0000-1000-8000-00805f9b34fb"))
                 mBluetoothGatt?.setCharacteristicNotification(char, true)
@@ -74,16 +81,16 @@ class BluetoothService : Service() {
         override fun onCharacteristicChanged(gatt: BluetoothGatt?, characteristic: BluetoothGattCharacteristic?) {
             super.onCharacteristicChanged(gatt, characteristic)
             val data = characteristic!!.value
-
-            if (dataIndex == 0 || dataIndex == 1) {
-                string += String(data)
-                dataIndex++
-            } else {
-                string += String(data)
-                getData(string)
-                dataIndex = 0
-                string = ""
-            }
+            getData(String(data))
+//            if (dataIndex == 0 || dataIndex == 1) {
+//                string += String(data)
+//                dataIndex++
+//            } else {
+//                string += String(data)
+//                getData(string)
+//                dataIndex = 0
+//                string = ""
+//            }
         }
 
         override fun onServicesDiscovered(gatt: BluetoothGatt?, status: Int) {
@@ -94,6 +101,7 @@ class BluetoothService : Service() {
 
     fun getData(data: String) {
         val stringBuilder = StringBuilder(data.length)
+
         for (char in data) {
             stringBuilder.append(char)
             if (char == '\n') {
@@ -105,10 +113,10 @@ class BluetoothService : Service() {
         val dataManager = DataManager(this)
         val isSleepMode = dataManager.isSleepMode
         if (isNotificationOk && isSleepMode) {
-            isNotificationOk = false
-            mHandler.postDelayed({
-                isNotificationOk = true
-            }, 7000)
+//            isNotificationOk = false
+//            mHandler.postDelayed({
+//                isNotificationOk = true
+//            }, 7000)
             val vibrate: Long = (dataManager.vibrateTime * 1000).toLong()
             val vibrateArr: LongArray = kotlin.LongArray(3, { it.toLong() * vibrate })
             val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -139,6 +147,35 @@ class BluetoothService : Service() {
         }
     }
 
+    fun addData(data: String) {
+        val stringBuilder = StringBuilder(data.length)
+        val dataManager = DataManager(this)
+        val token = dataManager.token
+
+        for (char in data) {
+            stringBuilder.append(char)
+            if (char == '\n') {
+                Log.e("data", stringBuilder.toString())
+                stringBuilder.delete(0, stringBuilder.length)
+            }
+        }
+
+        NetworkHelper.networkInstance.saveUserNeck(token).enqueue(object : Callback<ResponseBody> {
+            override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>?) {
+                if (response?.code() == 200) {
+                    val json = JSONObject(response.body()!!.string())
+                    val status = json.getInt("status")
+                    if (status == 200) {
+
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
+            }
+
+        })
+    }
 
     companion object {
         enum class Status {
