@@ -64,6 +64,6 @@ class PieChartValueView : LinearLayout {
 
     @SuppressLint("SetTextI18n")
     fun setPercentage(percentage: Float) {
-        circleGraphValue_percentage.text = "" + percentage
+        circleGraphValue_percentage.text = "" + percentage.toInt()
     }
 }

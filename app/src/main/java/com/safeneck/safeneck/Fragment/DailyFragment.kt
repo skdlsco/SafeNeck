@@ -1,13 +1,11 @@
 package com.safeneck.safeneck.Fragment
 
-import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.google.gson.Gson
 import com.safeneck.safeneck.R
 import com.safeneck.safeneck.Utils.DataManager
 import com.safeneck.safeneck.Utils.NetworkHelper
@@ -36,12 +34,28 @@ class DailyFragment : Fragment() {
                         val json = JSONObject(response.body()!!.string())
                         Log.e("getCircleGraph", "" + json.toString())
                         val status = json.getInt("status")
+
                         if (status == 200) {
-                            elements.add(PieChartView.Element(resources.getColor(R.color.colorVeryGood), 25f))
-                            elements.add(PieChartView.Element(resources.getColor(R.color.colorGood), 25f))
-                            elements.add(PieChartView.Element(resources.getColor(R.color.colorCommon), 12f))
-                            elements.add(PieChartView.Element(resources.getColor(R.color.colorBad), 26f))
-                            elements.add(PieChartView.Element(resources.getColor(R.color.colorVeryBad), 12f))
+                            val data = json.getJSONObject("data")
+                            val fine = data.getInt("fine")
+                            val caution = data.getInt("caution")
+                            val warning = data.getInt("warning")
+                            val bad = data.getInt("bad")
+                            val verybad = data.getInt("verybad")
+                            val sum = (fine + caution + warning + bad + verybad).toFloat()
+
+                            elements.add(PieChartView.Element(resources.getColor(R.color.colorVeryGood), fine / sum * 100))
+                            view.daily_pieChartValue_veryGood.setPercentage(fine / sum * 100)
+                            elements.add(PieChartView.Element(resources.getColor(R.color.colorGood), caution / sum * 100))
+                            view.daily_pieChartValue_good.setPercentage(caution / sum * 100)
+                            elements.add(PieChartView.Element(resources.getColor(R.color.colorCommon), warning / sum * 100))
+                            view.daily_pieChartValue_common.setPercentage(warning / sum * 100)
+                            elements.add(PieChartView.Element(resources.getColor(R.color.colorBad), bad / sum * 100))
+                            view.daily_pieChartValue_bad.setPercentage(bad / sum * 100)
+                            elements.add(PieChartView.Element(resources.getColor(R.color.colorVeryBad), verybad / sum * 100))
+                            view.daily_pieChartValue_veryBad.setPercentage(verybad / sum * 100)
+
+
                             view.daily_pieChart.elements = elements
                             view.daily_pieChart.requestLayout()
                         }
@@ -60,6 +74,7 @@ class DailyFragment : Fragment() {
                             setToday(view, json.getInt("today"))
                             setYesterday(view, json.getInt("yesterday"))
                             setDoubleday(view, json.getInt("doubleday"))
+
                         }
                     }
                 }

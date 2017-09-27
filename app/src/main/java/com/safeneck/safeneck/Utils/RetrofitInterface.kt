@@ -36,7 +36,7 @@ interface RetrofitInterface {
     fun getBarGraph(@Query("token") token: String): Call<ResponseBody>
 
     @GET("/alarm/saveUserNeck")
-    fun saveUserNeck(@Query("token") token: String): Call<ResponseBody>
+    fun saveUserNeck(@Query("token") token: String, @Query("middleSlope") middleSlope: String, @Query("leftSlope") leftSlope: String, @Query("rightSlope") rightSlope: String): Call<ResponseBody>
 
     //Setting
     @POST("/setting/dailyAward")

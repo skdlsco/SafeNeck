@@ -116,6 +116,7 @@ class BluetoothService : Service() {
 //            mHandler.postDelayed({
 //                isNotificationOk = true
 //            }, 7000)
+            addData(data)
             val vibrate: Long = (dataManager.vibrateTime * 1000).toLong()
             val vibrateArr: LongArray = kotlin.LongArray(3, { it.toLong() * vibrate })
             val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -150,16 +151,17 @@ class BluetoothService : Service() {
         val stringBuilder = StringBuilder(data.length)
         val dataManager = DataManager(this)
         val token = dataManager.token
-
+        val datas = ArrayList<String>()
         for (char in data) {
             stringBuilder.append(char)
             if (char == '\n') {
                 Log.e("data", stringBuilder.toString())
+                datas.add(stringBuilder.toString())
                 stringBuilder.delete(0, stringBuilder.length)
             }
         }
-
-        NetworkHelper.networkInstance.saveUserNeck(token).enqueue(object : Callback<ResponseBody> {
+        //1 = middle , 2 = left ,3 = right
+        NetworkHelper.networkInstance.saveUserNeck(token, datas[1], datas[0], datas[2]).enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>?) {
                 if (response?.code() == 200) {
                     val json = JSONObject(response.body()!!.string())
