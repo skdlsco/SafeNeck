@@ -25,12 +25,6 @@ class DailyFragment : Fragment() {
         val view: View = inflater!!.inflate(R.layout.fragment_daily, container, false)
         val dataManager = DataManager(context)
         val elements: ArrayList<PieChartView.Element> = ArrayList()
-        elements.add(PieChartView.Element(resources.getColor(R.color.colorVeryGood), 25f))
-        elements.add(PieChartView.Element(resources.getColor(R.color.colorGood), 25f))
-        elements.add(PieChartView.Element(resources.getColor(R.color.colorCommon), 12f))
-        elements.add(PieChartView.Element(resources.getColor(R.color.colorBad), 26f))
-        elements.add(PieChartView.Element(resources.getColor(R.color.colorVeryBad), 12f))
-        view.daily_pieChart.elements = elements
 
         if (NetworkHelper.returnNetworkState(context)) {
             val token = dataManager.token
@@ -41,7 +35,13 @@ class DailyFragment : Fragment() {
                         Log.e("getCircleGraph", "" + json.toString())
                         val status = json.getInt("status")
                         if (status == 200) {
-                            Log.e("getCircleGraph", "" + json.toString())
+                            elements.add(PieChartView.Element(resources.getColor(R.color.colorVeryGood), 25f))
+                            elements.add(PieChartView.Element(resources.getColor(R.color.colorGood), 25f))
+                            elements.add(PieChartView.Element(resources.getColor(R.color.colorCommon), 12f))
+                            elements.add(PieChartView.Element(resources.getColor(R.color.colorBad), 26f))
+                            elements.add(PieChartView.Element(resources.getColor(R.color.colorVeryBad), 12f))
+                            view.daily_pieChart.elements = elements
+                            view.daily_pieChart.requestLayout()
                         }
                     }
                 }

@@ -52,32 +52,25 @@ class MainFragment : Fragment() {
         view.fragment_main_barChart.elements = today
 
         view.fragment_main_btn_daily.isSelected = true
+
         view.fragment_main_btn_daily.setOnClickListener {
             setTextsProperty(0)
-        }
-
-        view.fragment_main_btn_weekly.setOnClickListener {
-            setTextsProperty(1)
-        }
-
-        view.fragment_main_btn_monthly.setOnClickListener {
-            setTextsProperty(2)
-        }
-
-        view.fragment_main_btn_daily.setOnClickListener {
             view.fragment_main_barChart.elements = today
             view.fragment_main_barChart.requestLayout()
         }
 
         view.fragment_main_btn_weekly.setOnClickListener {
+            setTextsProperty(1)
             view.fragment_main_barChart.elements = weekly
             view.fragment_main_barChart.requestLayout()
         }
 
         view.fragment_main_btn_monthly.setOnClickListener {
+            setTextsProperty(2)
             view.fragment_main_barChart.elements = monthly
             view.fragment_main_barChart.requestLayout()
         }
+
         if (NetworkHelper.returnNetworkState(context)) {
             val token = dataManager.token
             NetworkHelper.networkInstance.getData(token).enqueue(object : Callback<Alarm> {

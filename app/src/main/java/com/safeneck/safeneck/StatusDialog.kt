@@ -16,6 +16,13 @@ class StatusDialog(context: Context) : Dialog(context) {
         BluetoothService.getData = object : BluetoothService.Companion.GetData.getData {
             override fun getData(data: String) {
                 Log.e("inDialog", data)
+                val stringBuilder = StringBuilder(data.length)
+                for (char in data) {
+                    stringBuilder.append(char)
+                    if (char == '\n') {
+                        stringBuilder.delete(0, stringBuilder.length)
+                    }
+                }
             }
         }
     }

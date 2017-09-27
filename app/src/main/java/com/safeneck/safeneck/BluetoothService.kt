@@ -105,7 +105,6 @@ class BluetoothService : Service() {
         for (char in data) {
             stringBuilder.append(char)
             if (char == '\n') {
-                Log.e("data", stringBuilder.toString())
                 stringBuilder.delete(0, stringBuilder.length)
             }
         }
