@@ -15,6 +15,7 @@ import android.widget.Spinner
 import android.widget.Toast
 import com.safeneck.safeneck.Adapter.SpinnerAgeAdapter
 import com.safeneck.safeneck.Adapter.SpinnerWorkAdapter
+import com.safeneck.safeneck.TutorialActivity
 import com.safeneck.safeneck.Utils.NetworkHelper
 import com.safeneck.safeneck.Utils.RetrofitInterface
 import com.safeneck.safeneck.databinding.ActivityFirstLoginBinding
@@ -37,7 +38,7 @@ class FirstLoginActivity : AppCompatActivity() {
 
         firstLogin_container.setOnClickListener {
             finishAffinity()
-            startActivity<LoginActivity>()
+            startActivity<TutorialActivity>()
         }
 
         val age = ArrayList<String>()
@@ -98,7 +99,7 @@ class FirstLoginActivity : AppCompatActivity() {
                             val json = JSONObject("" + response.body()!!.string())
                             val status = json.getInt("status")
                             if (status == 200) {
-                                startActivity<MainActivity>()
+                                startActivity<TutorialActivity>()
                                 return
                             }
                         }

@@ -37,6 +37,8 @@
             android:name=".BluetoothService"
             android:enabled="true" />
         <service android:name=".ReportService" />
+
+        <activity android:name=".TutorialActivity"></activity>
     </application>
 
 </manifest>
